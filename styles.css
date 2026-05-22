@@ -1136,6 +1136,14 @@ h3 {
   background: #fff;
 }
 
+.site-footer .copyright {
+  flex-basis: 100%;
+  margin: 4px 0 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+  text-align: center;
+}
+
 .site-footer img {
   width: min(240px, 60vw);
 }
