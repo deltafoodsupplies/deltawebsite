@@ -201,6 +201,122 @@ textarea {
   color: #fff;
 }
 
+.page-hero {
+  padding: clamp(58px, 8vw, 112px) clamp(20px, 5vw, 72px);
+  color: #fff;
+  background:
+    linear-gradient(112deg, rgba(7, 37, 95, 0.98) 0%, rgba(7, 63, 152, 0.92) 58%, rgba(0, 137, 59, 0.72) 100%),
+    var(--blue-950);
+}
+
+.page-hero .eyebrow {
+  color: #a8f2c7;
+}
+
+.page-hero h1 {
+  max-width: 930px;
+}
+
+.page-hero p {
+  max-width: 780px;
+  margin: 22px 0 0;
+  color: rgba(255, 255, 255, 0.88);
+  font-size: clamp(1.03rem, 1.7vw, 1.25rem);
+}
+
+.breadcrumb {
+  margin-bottom: 24px;
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 0.92rem;
+  font-weight: 800;
+}
+
+.breadcrumb a {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.content-page {
+  padding: clamp(58px, 8vw, 104px) clamp(20px, 5vw, 72px);
+}
+
+.content-page.alt {
+  background: var(--surface-soft);
+}
+
+.seo-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 34px;
+}
+
+.seo-card {
+  padding: 24px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: #fff;
+  box-shadow: 0 16px 36px rgba(20, 32, 51, 0.07);
+  transition:
+    transform 220ms ease,
+    box-shadow 220ms ease,
+    border-color 220ms ease;
+}
+
+.seo-card:hover {
+  border-color: rgba(15, 89, 189, 0.34);
+  box-shadow: 0 22px 48px rgba(20, 32, 51, 0.12);
+  transform: translateY(-5px);
+}
+
+.seo-card p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.seo-card a {
+  display: inline-block;
+  margin-top: 14px;
+  color: var(--blue-900);
+  font-weight: 900;
+}
+
+.copy-block {
+  max-width: 980px;
+}
+
+.copy-block p {
+  color: var(--muted);
+  font-size: 1.05rem;
+}
+
+.copy-block ul {
+  display: grid;
+  gap: 10px;
+  margin: 24px 0 0;
+  padding-left: 20px;
+  color: var(--muted);
+}
+
+.cta-band {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) auto;
+  gap: 24px;
+  align-items: center;
+  padding: clamp(30px, 5vw, 48px);
+  border-radius: var(--radius);
+  color: #fff;
+  background: linear-gradient(112deg, var(--blue-950), var(--blue-900) 58%, var(--green-700));
+}
+
+.cta-band h2 {
+  color: #fff;
+}
+
+.cta-band p {
+  margin: 12px 0 0;
+  color: rgba(255, 255, 255, 0.86);
+}
+
 .hero::after {
   content: "";
   position: absolute;
@@ -1114,8 +1230,13 @@ h3 {
 
   .product-grid,
   .steps,
-  .review-grid {
+  .review-grid,
+  .seo-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .cta-band {
+    grid-template-columns: 1fr;
   }
 
   .contact-cards {
@@ -1198,7 +1319,8 @@ h3 {
   .steps,
   .metrics,
   .nanak-list,
-  .review-grid {
+  .review-grid,
+  .seo-grid {
     grid-template-columns: 1fr;
   }
 
