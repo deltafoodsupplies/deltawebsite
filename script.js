@@ -1,11 +1,32 @@
 const header = document.querySelector("[data-header]");
 const nav = document.querySelector("[data-nav]");
 const toggle = document.querySelector("[data-nav-toggle]");
+const navGroups = document.querySelectorAll(".nav-group");
+const mobileMenuQuery = window.matchMedia("(max-width: 980px)");
+
+const closeNavGroups = () => {
+  navGroups.forEach((group) => {
+    group.classList.remove("is-expanded");
+    group.querySelector(".nav-parent")?.setAttribute("aria-expanded", "false");
+  });
+};
 
 toggle?.addEventListener("click", () => {
   const isOpen = nav.classList.toggle("is-open");
   toggle.setAttribute("aria-expanded", String(isOpen));
   toggle.setAttribute("aria-label", isOpen ? "Close navigation" : "Open navigation");
+  if (!isOpen) closeNavGroups();
+});
+
+navGroups.forEach((group) => {
+  const parent = group.querySelector(".nav-parent");
+  parent?.addEventListener("click", () => {
+    if (!mobileMenuQuery.matches) return;
+    const shouldOpen = !group.classList.contains("is-expanded");
+    closeNavGroups();
+    group.classList.toggle("is-expanded", shouldOpen);
+    parent.setAttribute("aria-expanded", String(shouldOpen));
+  });
 });
 
 nav?.addEventListener("click", (event) => {
@@ -13,6 +34,7 @@ nav?.addEventListener("click", (event) => {
     nav.classList.remove("is-open");
     toggle?.setAttribute("aria-expanded", "false");
     toggle?.setAttribute("aria-label", "Open navigation");
+    closeNavGroups();
   }
 });
 
@@ -24,10 +46,11 @@ updateHeader();
 window.addEventListener("scroll", updateHeader, { passive: true });
 
 const animatedElements = document.querySelectorAll(
-  ".section, .nanak-band, .contact-panel, .product-card, .steps article, .review-card, .faq-list details"
+  ".section, .content-page, .nanak-band, .contact-panel, .product-card, .seo-card, .steps article, .review-card, .faq-list details"
 );
+const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches && "IntersectionObserver" in window) {
+if (!reduceMotion && "IntersectionObserver" in window) {
   const isInView = (element) => {
     const rect = element.getBoundingClientRect();
     return rect.top < window.innerHeight * 0.92 && rect.bottom > 0;
