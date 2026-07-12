@@ -1,0 +1,20 @@
+{
+  "name": "delta-food-supplies-api",
+  "version": "1.0.0",
+  "description": "Backend API for deltafoodsupplies.com — inquiries now, store ordering system next.",
+  "type": "module",
+  "main": "src/server.js",
+  "engines": { "node": ">=20" },
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.21.2",
+    "express-rate-limit": "^7.5.0",
+    "helmet": "^8.0.0",
+    "mongoose": "^8.9.5",
+    "nodemailer": "^6.9.16"
+  }
+}

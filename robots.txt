@@ -1,4 +1,6 @@
 User-agent: *
 Allow: /
+Disallow: /admin.html
+Disallow: /checkout.html
 
 Sitemap: https://deltafoodsupplies.com/sitemap.xml
