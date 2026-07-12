@@ -65,7 +65,9 @@ if (!reduceMotion && "IntersectionObserver" in window) {
         }
       });
     },
-    { rootMargin: "0px 0px -12% 0px", threshold: 0.12 }
+    // threshold 0: tall sections can never reach a fractional visibility
+    // threshold on small screens; the rootMargin already gates the reveal.
+    { rootMargin: "0px 0px -12% 0px", threshold: 0 }
   );
 
   animatedElements.forEach((element) => {
@@ -177,7 +179,6 @@ fetch("assets/brands/manifest.json")
       const img = document.createElement("img");
       img.src = `assets/brands/${file}`;
       img.alt = `${brandName} logo`;
-      img.loading = "lazy";
       img.decoding = "async";
       img.addEventListener("load", () => {
         if (slot.classList.contains("marquee-name")) {
