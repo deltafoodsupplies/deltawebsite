@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Wholesale Ordering Portal | Delta Food Supplies</title>
+    <meta name="description" content="Delta Food Supplies wholesale ordering portal for approved grocery, restaurant, and foodservice customers." />
+    <meta name="robots" content="noindex, nofollow" />
+    <link rel="canonical" href="https://deltafoodsupplies.com/order.html" />
+    <meta name="theme-color" content="#073f98" />
+    <link rel="icon" href="assets/favicon-2026.png" />
+    <link rel="stylesheet" href="styles.css?v=20260610-2" />
+  </head>
+  <body>
+    <header class="site-header portal-header" data-header>
+      <a class="brand" href="index.html" aria-label="Delta Food Supplies home"><img src="assets/delta-logo-2026-clean-web.png" alt="Delta Food Supplies" /></a>
+      <nav class="portal-nav" aria-label="Order portal navigation">
+        <span>Order portal</span>
+      </nav>
+      <div class="portal-account-menu" data-portal-account>
+        <a class="button secondary portal-login-link" href="#top" data-portal-login-link>Customer login</a>
+        <button class="portal-account-button is-hidden" type="button" data-account-toggle aria-expanded="false"><span data-account-initials>DF</span><strong data-account-name>Account</strong></button>
+        <div class="portal-account-dropdown is-hidden" data-account-dropdown>
+          <div data-account-menu-summary></div>
+          <button type="button" data-account-settings-toggle>Account settings</button>
+          <div class="account-settings-panel is-hidden" data-account-settings-panel></div>
+          <a href="checkout.html">Review draft order</a>
+          <a href="contact.html">Contact sales</a>
+          <button type="button" data-logout>Log out</button>
+        </div>
+      </div>
+    </header>
+    <main id="top">
+      <section class="login-shell" data-login-shell aria-label="Customer login">
+        <div class="portal-login">
+          <div class="login-brand-panel">
+            <img src="assets/delta-logo-2026-clean-web.png" alt="Delta Food Supplies" />
+            <p class="section-kicker">Wholesale account portal</p>
+            <h2>Built for recurring restaurant and store orders.</h2>
+            <div class="login-benefits">
+              <span>Approved account pricing</span>
+              <span>Store or restaurant order forms</span>
+              <span>Weekly and twice-weekly order schedules</span>
+              <span>Warehouse pickup or Delta truck delivery</span>
+            </div>
+          </div>
+          <div class="login-workspace">
+            <form class="login-card" data-login-form>
+              <div>
+                <p class="section-kicker">Customer login</p>
+                <h2>Sign in to place an order.</h2>
+                <p>Only approved wholesale accounts can view prices, approved order forms, and submit online orders.</p>
+              </div>
+              <label for="loginEmail">Email address<input id="loginEmail" name="email" type="email" autocomplete="email" required placeholder="orders@example.com" /></label>
+              <label for="loginCode">Password or access code<input id="loginCode" name="accessCode" type="password" autocomplete="current-password" required placeholder="Provided by Delta sales" /></label>
+              <button class="button primary full" type="submit">Sign in</button>
+              <button class="text-button login-link" type="button" data-show-reset>Forgot password?</button>
+              <p class="small-note" data-login-status></p>
+              <p class="small-note">Need portal access? <a href="contact.html">Contact Delta sales</a> to activate your account.</p>
+              <p class="small-note">Demo access: buyer@patelgrocery.com / DELTA-STORE</p>
+            </form>
+            <form class="login-card reset-card is-hidden" data-reset-form>
+              <div>
+                <p class="section-kicker">Reset access</p>
+                <h2>Request a password reset.</h2>
+                <p>Enter the email on your wholesale account. Delta sales will verify the account and send reset instructions.</p>
+              </div>
+              <label for="resetEmail">Account email<input id="resetEmail" name="email" type="email" autocomplete="email" required placeholder="orders@example.com" /></label>
+              <button class="button primary full" type="submit">Request reset</button>
+              <button class="text-button login-link" type="button" data-show-login>Back to sign in</button>
+              <p class="small-note" data-reset-status></p>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <section class="order-shell is-locked" data-order-shell aria-label="Wholesale ordering app">
+        <section class="order-main">
+          <div class="revenue-order-head">
+            <div>
+              <p class="section-kicker">Fast reorder</p>
+              <h2>Your usual order.</h2>
+              <p data-order-guidance>Start with the items your account orders most, then add deals, new items, and category staples before checkout.</p>
+            </div>
+            <div class="order-deadline-card" data-order-deadline></div>
+          </div>
+
+          <div class="order-context-strip">
+            <div class="account-card compact-account-card" data-account-card></div>
+            <div class="order-type-tabs compact-form-tabs" data-form-tabs></div>
+          </div>
+
+          <div class="reorder-grid" data-reorder-grid></div>
+
+          <div class="merch-nav" data-merch-nav aria-label="Order sections">
+            <button class="is-active" type="button" data-order-view="reorder">Reorder</button>
+            <button type="button" data-order-view="deals">Deals</button>
+            <button type="button" data-order-view="new">New</button>
+            <button type="button" data-order-view="frozen">Frozen</button>
+            <button type="button" data-order-view="cooler">Cooler</button>
+            <button type="button" data-order-view="dry">Dry</button>
+            <button type="button" data-order-view="brands">Brands</button>
+            <button type="button" data-order-view="all">All</button>
+          </div>
+
+          <div class="order-toolbar">
+            <div>
+              <label for="productSearch">Search products</label>
+              <input id="productSearch" data-product-search type="search" placeholder="Search by item, brand, SKU, or category" />
+            </div>
+            <div>
+              <label for="categoryFilter">Category</label>
+              <select id="categoryFilter" data-category-filter></select>
+            </div>
+            <div>
+              <label for="brandFilter">Brand</label>
+              <select id="brandFilter" data-brand-filter></select>
+            </div>
+            <div>
+              <label for="displayMode">Display</label>
+              <select id="displayMode" data-display-mode>
+                <option value="list">List view</option>
+                <option value="brand">Group by brand</option>
+              </select>
+            </div>
+          </div>
+          <div class="upsell-strip" data-upsell-strip></div>
+          <div class="product-order-list" data-product-list></div>
+        </section>
+
+        <aside class="cart-panel" aria-live="polite">
+          <div class="cart-head">
+            <div>
+              <span>Current order</span>
+              <strong data-cart-count>0 items</strong>
+            </div>
+            <button class="text-button" type="button" data-clear-cart>Clear</button>
+          </div>
+          <div class="cart-lines" data-cart-lines></div>
+          <dl class="order-total">
+            <div><dt>Cases</dt><dd data-total-cases>0</dd></div>
+            <div><dt>Estimated total</dt><dd data-total-price>$0.00</dd></div>
+          </dl>
+          <div class="cart-suggestions" data-cart-suggestions></div>
+          <button class="button primary full" type="button" data-submit-order>Review and submit</button>
+          <p class="small-note" data-order-status></p>
+        </aside>
+      </section>
+      <div class="mobile-cart-bar is-hidden" data-mobile-cart-bar>
+        <div><strong data-mobile-cart-count>0 cases</strong><span data-mobile-cart-total>$0.00</span></div>
+        <button class="button primary" type="button" data-mobile-submit>Review</button>
+      </div>
+    </main>
+    <footer class="site-footer"><img src="assets/delta-logo-2026-clean-web.png" alt="Delta Food Supplies" /><div><strong>Delta Food Supplies</strong><span>Office: +1 469.473.6655</span></div><a href="contact.html">Contact sales</a><p class="copyright">Copyright © 2026 | All Rights Reserved</p></footer>
+    <script src="order-data.js?v=20260610-2"></script>
+    <script src="pdf-products.js?v=20260610-2"></script>
+    <script src="script.js?v=20260610-2"></script>
+    <script src="order-app.js?v=20260610-2"></script>
+  </body>
+</html>

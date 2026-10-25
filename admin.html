@@ -1,0 +1,331 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Sales Admin | Delta Food Supplies</title>
+    <meta name="description" content="Delta Food Supplies sales admin for customer order access, item pricing, and submitted wholesale orders." />
+    <meta name="robots" content="noindex, nofollow" />
+    <link rel="canonical" href="https://deltafoodsupplies.com/admin.html" />
+    <meta name="theme-color" content="#073f98" />
+    <link rel="icon" href="assets/favicon-2026.png" />
+    <link rel="stylesheet" href="styles.css?v=20260610-2" />
+  </head>
+  <body>
+    <header class="site-header" data-header>
+      <a class="brand" href="index.html" aria-label="Delta Food Supplies home"><img src="assets/delta-logo-2026-clean-web.png" alt="Delta Food Supplies" /></a>
+      <button class="nav-toggle" type="button" aria-label="Open navigation" aria-expanded="false" data-nav-toggle><span></span><span></span><span></span></button>
+      <nav class="site-nav" aria-label="Primary navigation" data-nav>
+        <a href="products.html">Products</a>
+        <a href="order.html">Order Portal</a>
+        <a class="nav-cta" href="contact.html">Contact</a>
+      </nav>
+    </header>
+    <main id="top">
+      <section class="order-hero admin-hero portal-hero">
+        <div>
+          <p class="eyebrow">Internal sales team</p>
+          <h1>Staff login required.</h1>
+          <p>Authorized Delta sales users can manage customer access, pricing, and submitted wholesale orders.</p>
+        </div>
+        <a class="button secondary" href="order.html">Customer portal</a>
+      </section>
+
+      <section class="login-shell" data-admin-login-shell aria-label="Staff login">
+        <div class="portal-login admin-login">
+          <div class="login-brand-panel">
+            <img src="assets/delta-logo-2026-clean-web.png" alt="Delta Food Supplies" />
+            <p class="section-kicker">Sales workspace</p>
+            <h2>Manage pricing, access, and order flow.</h2>
+            <div class="login-benefits">
+              <span>Customer login controls</span>
+              <span>Store and restaurant form access</span>
+              <span>Product pricing and availability</span>
+              <span>Labels for low stock, sale, and short date</span>
+            </div>
+          </div>
+          <div class="login-workspace">
+            <form class="login-card" data-admin-login-form>
+              <div>
+                <p class="section-kicker">Staff login</p>
+                <h2>Sign in to manage the order system.</h2>
+                <p>Admin tools are only shown after staff access is verified.</p>
+              </div>
+              <label for="staffEmail">Staff email<input id="staffEmail" name="email" type="email" autocomplete="email" required placeholder="sales@deltafoodsupplies.com" /></label>
+              <label for="staffCode">Staff password or access code<input id="staffCode" name="accessCode" type="password" autocomplete="current-password" required placeholder="Internal access code" /></label>
+              <button class="button primary full" type="submit">Sign in</button>
+              <button class="text-button login-link" type="button" data-admin-show-reset>Forgot password?</button>
+              <p class="small-note" data-admin-login-status></p>
+              <p class="small-note">Demo staff access: sales@deltafoodsupplies.com / DELTA-ADMIN</p>
+            </form>
+            <form class="login-card reset-card is-hidden" data-admin-reset-form>
+              <div>
+                <p class="section-kicker">Reset staff access</p>
+                <h2>Request an admin password reset.</h2>
+                <p>Reset requests should be verified by ownership before a new staff credential is issued.</p>
+              </div>
+              <label for="adminResetEmail">Staff email<input id="adminResetEmail" name="email" type="email" autocomplete="email" required placeholder="sales@deltafoodsupplies.com" /></label>
+              <button class="button primary full" type="submit">Request reset</button>
+              <button class="text-button login-link" type="button" data-admin-show-login>Back to sign in</button>
+              <p class="small-note" data-admin-reset-status></p>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <section class="admin-shell is-locked" data-admin-shell aria-label="Sales admin workspace">
+        <div class="portal-session admin-session">
+          <span data-admin-session-label>Signed in as sales</span>
+          <button class="text-button" type="button" data-admin-logout>Log out</button>
+        </div>
+        <div class="admin-tabs" role="tablist" aria-label="Admin sections">
+          <button class="is-active" type="button" data-admin-tab="orders">Orders</button>
+          <button type="button" data-admin-tab="users">Users</button>
+          <button type="button" data-admin-tab="customers">Customers</button>
+          <button type="button" data-admin-tab="subcategories">Sub Categories</button>
+          <button type="button" data-admin-tab="brands">Brands</button>
+          <button type="button" data-admin-tab="products">Products</button>
+          <button type="button" data-admin-tab="tags">Tags</button>
+        </div>
+
+        <section class="admin-view is-active" data-admin-view="orders">
+          <div class="section-head compact">
+            <div><p class="section-kicker">Submitted orders</p><h2>Search orders.</h2></div>
+            <button class="button secondary" type="button" data-reset-demo>Reset demo data</button>
+          </div>
+          <div class="admin-filter-panel">
+            <label>Status Filter<select data-order-status-filter><option>All</option><option>Order Received</option><option>Order Entered</option><option>Order Shipped</option></select></label>
+            <p><strong data-order-count>0 orders found.</strong><span> Use filters to find submitted customer orders.</span></p>
+          </div>
+          <div class="admin-search-row"><input data-order-global-search placeholder="global search ..." /></div>
+          <div class="admin-table-wrap">
+            <table class="admin-table admin-wide-table">
+              <thead><tr><th>Order</th><th>Name</th><th>Email</th><th>Company Name</th><th>Territory</th><th>Sales Person</th><th>Status</th><th>Order Date</th><th>Ship Date</th><th>Action</th></tr></thead>
+              <tbody data-admin-orders></tbody>
+            </table>
+          </div>
+          <div class="order-detail-panel" data-order-detail></div>
+        </section>
+
+        <section class="admin-view" data-admin-view="users">
+          <div class="section-head compact">
+            <div><p class="section-kicker">Delta staff</p><h2>Manage users.</h2></div>
+          </div>
+          <form class="admin-form user-form" data-user-form>
+            <input name="id" type="hidden" />
+            <label>First Name<input name="firstName" required /></label>
+            <label>Last Name<input name="lastName" required /></label>
+            <label>Email address<input name="email" type="email" required /></label>
+            <label>Phone Number<input name="phone" /></label>
+            <label>User Role<select name="role"><option>Super Admin</option><option>Admin</option><option>Sales</option><option>Warehouse</option></select></label>
+            <label>Access Code<input name="accessCode" required /></label>
+            <label class="inline-check"><input name="active" type="checkbox" checked /> Active</label>
+            <label class="inline-check"><input name="emailConfirmed" type="checkbox" checked /> Email Confirmed</label>
+            <button class="button primary" type="submit">Save</button>
+          </form>
+          <div class="admin-table-wrap">
+            <table class="admin-table">
+              <thead><tr><th>#</th><th>Name</th><th>Email address</th><th>Role</th><th>Active</th><th>Email Confirmed</th><th>Action</th></tr></thead>
+              <tbody data-admin-users></tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="admin-view" data-admin-view="products">
+          <div class="section-head compact">
+            <div><p class="section-kicker">Catalog control</p><h2>Create product.</h2></div>
+          </div>
+          <form class="admin-form product-admin-form" data-product-form>
+            <input name="id" type="hidden" />
+            <label>Product Code (QuickBook)<input name="sku" required /></label>
+            <label>Product Name<input name="name" required /></label>
+            <label>Brand Name<select name="brand" data-product-brand-options required></select></label>
+            <label>Sub Category<select name="subCategory" data-product-subcategory-options required></select></label>
+            <label>Product Category (Dry, Cooler, or Frozen)<select name="productCategory"><option>Dry</option><option>Cooler</option><option>Frozen</option></select></label>
+            <label>Case Size<input name="pack" required /></label>
+            <label>Case price<input name="price" type="number" min="0" step="0.01" required /></label>
+            <label class="wide-label">Product Description (Optional)<textarea name="description" rows="5"></textarea></label>
+            <label>Product Tags<input name="tagText" placeholder="Optional searchable tags" /></label>
+            <fieldset>
+              <legend>Visible on</legend>
+              <label><input name="store" type="checkbox" /> Store form</label>
+              <label><input name="restaurant" type="checkbox" /> Restaurant form</label>
+            </fieldset>
+            <fieldset class="label-fieldset" data-product-labels>
+              <legend>Labels</legend>
+            </fieldset>
+            <label class="inline-check"><input name="outOfStock" type="checkbox" /> Out Of Stock</label>
+            <label class="inline-check"><input name="isNew" type="checkbox" /> New</label>
+            <label class="inline-check"><input name="hide" type="checkbox" /> Hide</label>
+            <label class="inline-check"><input name="active" type="checkbox" checked /> Active</label>
+            <button class="button primary" type="submit">Save</button>
+          </form>
+
+          <div class="section-head compact">
+            <div><p class="section-kicker">Catalog search</p><h2>Search products.</h2></div>
+            <div class="admin-actions">
+              <label class="button secondary file-button">Import CSV<input data-import-products type="file" accept=".csv" /></label>
+              <button class="button secondary" type="button" data-export-products>Export CSV</button>
+            </div>
+          </div>
+          <div class="product-filter-grid">
+            <label>Product Code<input data-product-filter="sku" placeholder="code search ..." /></label>
+            <label>Product Name<input data-product-filter="name" placeholder="Product search ..." /></label>
+            <label>Brand Name<select data-product-filter="brand"><option value="">All</option></select></label>
+            <label>Category<select data-product-filter="productCategory"><option value="">All</option><option>Dry</option><option>Cooler</option><option>Frozen</option></select></label>
+            <label>Sub Category<select data-product-filter="subCategory"><option value="">All</option></select></label>
+            <label>Visibility<select data-product-filter="visibility"><option value="">All</option><option value="visible">Visible</option><option value="hidden">Hidden</option></select></label>
+            <label>Active<select data-product-filter="active"><option value="">All</option><option value="active">Active</option><option value="inactive">Inactive</option></select></label>
+          </div>
+          <div class="admin-search-row"><input data-product-global-search placeholder="global search ..." /></div>
+          <div class="admin-table-wrap">
+            <table class="admin-table admin-wide-table">
+              <thead><tr><th>Product Code</th><th>Product Name</th><th>Brand Name</th><th>Case Size</th><th>Category</th><th>Sub Category</th><th>Visibility</th><th>Active</th><th>Action</th></tr></thead>
+              <tbody data-admin-products></tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="admin-view" data-admin-view="subcategories">
+          <div class="section-head compact">
+            <div><p class="section-kicker">Catalog structure</p><h2>Manage sub category.</h2></div>
+          </div>
+          <form class="admin-form subcategory-form" data-subcategory-form>
+            <input name="id" type="hidden" />
+            <label>Select Category (Frozen, Cooler or Dry)<select name="category"><option>Frozen</option><option>Cooler</option><option>Dry</option></select></label>
+            <label>Sub Category Name<input name="name" required /></label>
+            <label class="inline-check"><input name="active" type="checkbox" checked /> Active</label>
+            <button class="button primary" type="submit">Save</button>
+          </form>
+          <div class="admin-search-row"><input data-subcategory-search placeholder="search ..." /></div>
+          <div class="admin-table-wrap">
+            <table class="admin-table">
+              <thead><tr><th>Sub Category</th><th>Category</th><th>Active</th><th>Action</th></tr></thead>
+              <tbody data-admin-subcategories></tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="admin-view" data-admin-view="brands">
+          <div class="section-head compact">
+            <div><p class="section-kicker">Brand management</p><h2>Manage brand.</h2></div>
+          </div>
+          <form class="admin-form brand-form" data-brand-form>
+            <input name="id" type="hidden" />
+            <label>Brand Code (QuickBook)<input name="code" required /></label>
+            <label>Brand Name<input name="name" required /></label>
+            <label>Sub Category<select name="subCategory" data-brand-subcategory-options required></select></label>
+            <label>Brand Territory (Select Multiple)<select name="territories" multiple><option>TX</option><option>NM</option><option>OK</option><option>AR</option><option>LA</option></select></label>
+            <button class="button primary" type="submit">Save</button>
+          </form>
+          <div class="admin-search-row"><input data-brand-search placeholder="search ..." /></div>
+          <div class="admin-table-wrap">
+            <table class="admin-table">
+              <thead><tr><th>Brand Name</th><th>Sub Category</th><th>Brand Territory</th><th>Action</th></tr></thead>
+              <tbody data-admin-brands></tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="admin-view" data-admin-view="tags">
+          <div class="section-head compact">
+            <div><p class="section-kicker">Product tags</p><h2>Manage tags.</h2></div>
+          </div>
+          <form class="admin-form label-form" data-label-form>
+            <input name="id" type="hidden" />
+            <label>Tag Name<input name="name" required placeholder="Sale" /></label>
+            <label>Tag Color<input name="color" type="color" value="#0f8a4b" required /></label>
+            <label>PFS Territory<select name="territory"><option>All</option><option>TX</option><option>NM</option><option>OK</option><option>AR</option><option>LA</option></select></label>
+            <fieldset class="date-fieldset">
+              <legend>Tag Expiration</legend>
+              <label>Start Date<input name="startDate" type="date" /></label>
+              <label>End Date<input name="endDate" type="date" /></label>
+            </fieldset>
+            <label class="inline-check"><input name="active" type="checkbox" checked /> Active</label>
+            <button class="button primary" type="submit">Save</button>
+          </form>
+          <div class="admin-search-row"><input data-tag-search placeholder="search ..." /></div>
+          <div class="admin-table-wrap">
+            <table class="admin-table">
+              <thead><tr><th>Tag Name</th><th>Tag Expiration</th><th>Color</th><th>Active</th><th>Action</th></tr></thead>
+              <tbody data-admin-labels></tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="admin-view" data-admin-view="customers">
+          <div class="section-head compact">
+            <div><p class="section-kicker">Customer accounts</p><h2>Manage customer.</h2></div>
+          </div>
+          <form class="admin-form customer-form" data-customer-access-form>
+            <input name="id" type="hidden" />
+            <label>Company Name<input name="name" required /></label>
+            <label>Prefix<input name="prefix" /></label>
+            <label>First Name<input name="firstName" required /></label>
+            <label>Last Name<input name="lastName" /></label>
+            <label>Main Phone<input name="mainPhone" /></label>
+            <label>Alternative Phone Number (Optional)<input name="altPhone" /></label>
+            <label>Primary Email (use to login to the account)<input name="email" type="email" required /></label>
+            <label>2nd Primary Email (Optional)<input name="secondEmail" type="email" /></label>
+            <label>3rd Primary Email (Optional)<input name="thirdEmail" type="email" /></label>
+            <label>Company Type (Retailer, Restaurant, Other)<select name="companyType"><option>Retailer</option><option>Restaurant</option><option>Other</option></select></label>
+            <label>Shipping Address 1<input name="shippingAddress1" /></label>
+            <label>Shipping Address 2<input name="shippingAddress2" /></label>
+            <label>City<input name="city" required /></label>
+            <label>State<select name="state"><option>TX</option><option>NM</option><option>OK</option><option>AR</option><option>LA</option></select></label>
+            <label>Zip Code<input name="zip" /></label>
+            <label>Sales Person<select name="salesPerson" data-salesperson-options></select></label>
+            <label>Access Code<input name="accessCode" required /></label>
+            <fieldset>
+              <legend>Allowed forms</legend>
+              <label><input name="store" type="checkbox" checked /> Store</label>
+              <label><input name="restaurant" type="checkbox" /> Restaurant</label>
+            </fieldset>
+            <fieldset class="delivery-fieldset">
+              <legend>Delivery Options</legend>
+              <label>Repeat every<input name="repeatEvery" type="number" min="1" value="1" /></label>
+              <label>Unit<select name="repeatUnit"><option>Week</option><option>Month</option></select></label>
+              <div class="weekday-options">
+                <span>Repeat on</span>
+                <label><input name="orderDays" type="checkbox" value="Monday" /> M</label>
+                <label><input name="orderDays" type="checkbox" value="Tuesday" /> T</label>
+                <label><input name="orderDays" type="checkbox" value="Wednesday" /> W</label>
+                <label><input name="orderDays" type="checkbox" value="Thursday" /> TH</label>
+                <label><input name="orderDays" type="checkbox" value="Friday" /> F</label>
+                <label><input name="orderDays" type="checkbox" value="Saturday" /> S</label>
+                <label><input name="orderDays" type="checkbox" value="Sunday" /> Su</label>
+              </div>
+              <label>Starts<input name="startDate" type="date" /></label>
+              <label>Cutoff time<input name="cutoff" required placeholder="10:00 AM" /></label>
+            </fieldset>
+            <label class="inline-check"><input name="active" type="checkbox" checked /> Active login</label>
+            <button class="button primary" type="submit">Save customer access</button>
+          </form>
+          <div class="admin-table-wrap">
+            <table class="admin-table">
+              <thead><tr><th>Company Name</th><th>First Name</th><th>Last Name</th><th>Email</th><th>State</th><th>Phone Number</th><th>Active</th><th>Action</th></tr></thead>
+              <tbody data-admin-customers></tbody>
+            </table>
+          </div>
+        </section>
+      </section>
+      <div class="admin-modal is-hidden" data-tag-assign-modal role="dialog" aria-modal="true" aria-labelledby="assignTagsTitle">
+        <div class="admin-modal-panel">
+          <div class="admin-modal-head">
+            <h2 id="assignTagsTitle">Assign Tags</h2>
+            <button class="text-button" type="button" data-close-assign-modal>Close</button>
+          </div>
+          <div class="assign-tree" data-tag-assign-tree></div>
+          <div class="admin-actions align-right">
+            <button class="button primary" type="button" data-save-tag-assignments>Save Assignments</button>
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer class="site-footer"><img src="assets/delta-logo-2026-clean-web.png" alt="Delta Food Supplies" /><div><strong>Delta Food Supplies</strong><span>Internal sales workspace</span></div><a href="order.html">Order portal</a><p class="copyright">Copyright © 2026 | All Rights Reserved</p></footer>
+    <script src="order-data.js?v=20260610-2"></script>
+    <script src="pdf-products.js?v=20260610-2"></script>
+    <script src="script.js?v=20260610-2"></script>
+    <script src="admin-app.js?v=20260610-2"></script>
+  </body>
+</html>
