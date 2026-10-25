@@ -378,3 +378,13 @@ if (waButton) {
     });
   }
 }
+
+// Foldables / rotation: if the screen becomes wide enough for the desktop menu, close the mobile menu
+mobileMenuQuery.addEventListener?.("change", (e) => {
+  if (!e.matches && nav?.classList.contains("is-open")) {
+    nav.classList.remove("is-open");
+    toggle?.setAttribute("aria-expanded", "false");
+    toggle?.setAttribute("aria-label", "Open navigation");
+    closeNavGroups();
+  }
+});

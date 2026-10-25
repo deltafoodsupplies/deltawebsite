@@ -1,0 +1,102 @@
+/* ==========================================================
+   Motion layer — modern interactions (Oct 2026)
+   Everything here is skipped for visitors who prefer reduced motion.
+   To switch off: remove the motion.css <link> and motion.js <script>.
+   ========================================================== */
+
+/* Smooth cross-page transitions (Chrome/Edge/Safari 18+; others ignore) */
+@view-transition { navigation: auto; }
+
+@media (prefers-reduced-motion: no-preference) {
+  ::view-transition-old(root) { animation: mo-page-out 220ms ease both; }
+  ::view-transition-new(root) { animation: mo-page-in 380ms cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+
+  @keyframes mo-page-out { to { opacity: 0; transform: translateY(-8px); } }
+  @keyframes mo-page-in { from { opacity: 0; transform: translateY(14px); } }
+
+  /* ---- Scroll progress bar ---- */
+  .mo-progress {
+    position: fixed;
+    inset: 0 0 auto 0;
+    z-index: 80;
+    height: 3px;
+    transform-origin: 0 50%;
+    transform: scaleX(var(--mo-progress, 0));
+    background: linear-gradient(90deg, #e0457b, #f6a21a, #ffd36b);
+    pointer-events: none;
+  }
+
+  /* ---- Header tightens as you scroll ---- */
+  .site-header { transition: padding 260ms ease, box-shadow 220ms ease, background 220ms ease; }
+  .site-header.is-scrolled { padding-top: 7px; padding-bottom: 7px; }
+  .site-header .brand { transition: width 260ms ease; }
+  .site-header.is-scrolled .brand { width: min(210px, 50vw); }
+
+  /* ---- Nav links: sliding underline ---- */
+  .site-nav > a:not(.nav-cta) { position: relative; }
+  .site-nav > a:not(.nav-cta)::after {
+    content: "";
+    position: absolute;
+    left: 14px;
+    right: 14px;
+    bottom: 6px;
+    height: 2px;
+    border-radius: 2px;
+    background: currentColor;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 280ms cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+  .site-nav > a:not(.nav-cta):hover::after,
+  .site-nav > a:not(.nav-cta):focus-visible::after { transform: scaleX(1); transform-origin: left; }
+
+  /* ---- Section headings rise in, line by line ---- */
+  .mo-heading { clip-path: inset(0 0 100% 0); transform: translateY(0.35em); opacity: 0; }
+  .mo-heading.mo-in {
+    clip-path: inset(0 0 -0.2em 0);
+    transform: none;
+    opacity: 1;
+    transition: clip-path 900ms cubic-bezier(0.2, 0.7, 0.2, 1), transform 900ms cubic-bezier(0.2, 0.7, 0.2, 1), opacity 500ms ease;
+  }
+
+  /* ---- Cards: lift and gentle 3D tilt (works with the existing cursor spotlight) ---- */
+  .mo-tilt { position: relative; will-change: transform; }
+  .mo-tilt:not(.reveal),
+  .mo-tilt.reveal.is-visible {
+    transform: perspective(900px) rotateX(var(--mo-rx, 0deg)) rotateY(var(--mo-ry, 0deg)) translateY(var(--mo-lift, 0px));
+  }
+  .mo-tilt.mo-hover {
+    --mo-lift: -6px;
+    box-shadow: 0 24px 50px rgba(19, 32, 51, 0.14);
+  }
+  .mo-tilt.mo-hover:not(.reveal),
+  .mo-tilt.mo-hover.reveal.is-visible { transition: transform 120ms ease-out, box-shadow 380ms ease; }
+  .mo-tilt.mo-leave:not(.reveal),
+  .mo-tilt.mo-leave.reveal.is-visible { transition: transform 420ms cubic-bezier(0.2, 0.7, 0.2, 1), box-shadow 380ms ease; }
+
+  /* ---- Buttons: magnetic pull ---- */
+  .mo-magnet { transition: transform 300ms cubic-bezier(0.2, 0.7, 0.2, 1); }
+  .mo-magnet.mo-hover { transition: transform 90ms ease-out; }
+
+  /* ---- Hero illustration drifts with scroll and pointer ---- */
+  .hero-illustration {
+    transform: translate3d(var(--mo-px, 0px), calc(var(--mo-py, 0px) + var(--mo-scroll, 0px)), 0);
+    transition: transform 500ms cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+
+  /* ---- Scroll-driven zoom-in for big visual blocks (where supported) ---- */
+  @supports (animation-timeline: view()) {
+    .cta-band,
+    .service-map,
+    .contact-panel,
+    .nanak-band .section-head {
+      animation: mo-zoom-in linear both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 30%;
+    }
+    @keyframes mo-zoom-in {
+      from { opacity: 0.2; transform: scale(0.94) translateY(30px); }
+      to { opacity: 1; transform: none; }
+    }
+  }
+}

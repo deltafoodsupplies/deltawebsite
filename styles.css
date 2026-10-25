@@ -3549,7 +3549,7 @@ h3 {
   }
 }
 
-@media (max-width: 640px) {
+@media (max-width: 600px) {
   .site-header {
     padding: 12px 16px;
   }
@@ -4315,7 +4315,7 @@ h2 {
   }
 }
 
-@media (max-width: 640px) {
+@media (max-width: 600px) {
   .footer-grid {
     grid-template-columns: 1fr;
     gap: 30px;
@@ -4782,7 +4782,7 @@ h2 {
   }
 }
 
-@media (max-width: 640px) {
+@media (max-width: 600px) {
   .announce-bar {
     font-size: 0.83rem;
   }
@@ -4919,7 +4919,7 @@ h2 {
   }
 }
 
-@media (max-width: 640px) {
+@media (max-width: 600px) {
   .hero-stats {
     gap: 18px;
   }
@@ -5436,7 +5436,7 @@ h2 {
   }
 }
 
-@media (max-width: 640px) {
+@media (max-width: 600px) {
   .bento-grid {
     grid-template-columns: 1fr;
   }
@@ -5581,7 +5581,7 @@ h2 {
   background: var(--blue-100);
 }
 
-@media (max-width: 640px) {
+@media (max-width: 600px) {
   .wa-greeting {
     left: 14px;
     bottom: 76px;
@@ -5592,4 +5592,116 @@ h2 {
   .whatsapp-float::before {
     animation: none;
   }
+}
+
+/* ===== UX fixes — Oct 24, 2026 ===== */
+/* Inner-page hero glow was spilling past the screen edge (sideways scroll) */
+.page-hero {
+  overflow: hidden;
+}
+
+/* Readable green for small labels on light backgrounds (WCAG AA) */
+:root {
+  --green-text: #4a7a0c;
+}
+
+.eyebrow,
+.section-kicker,
+.contact-cards strong {
+  color: var(--green-text);
+}
+
+/* Phones: keep the WhatsApp button off left-aligned text — stack it above back-to-top */
+@media (max-width: 600px) {
+  .whatsapp-float {
+    left: auto;
+    right: 14px;
+    bottom: 76px;
+    width: 46px;
+    height: 46px;
+  }
+
+  .whatsapp-float svg {
+    width: 26px;
+    height: 26px;
+  }
+
+  .back-to-top {
+    right: 14px;
+    bottom: 18px;
+  }
+}
+
+
+/* ===== Foldables (iPhone Duo and similar) — Oct 24, 2026 =====
+   Cover screen ~466px wide; unfolded ~626px portrait / ~890x626 landscape.
+   The phone layout now stops at 600px so the unfolded screen gets the roomier tablet layout. */
+
+/* Heights that follow the real visible screen when the phone folds/unfolds */
+@supports (height: 100dvh) {
+  .hero { min-height: min(680px, calc(100dvh - 104px)); }
+  @media (max-width: 980px) {
+    .site-nav { max-height: calc(100dvh - 96px); }
+  }
+}
+
+/* Keep content clear of the Dynamic Island and rounded corners (needs viewport-fit=cover) */
+.site-header {
+  padding-left: max(clamp(18px, 4vw, 64px), env(safe-area-inset-left));
+  padding-right: max(clamp(18px, 4vw, 64px), env(safe-area-inset-right));
+}
+.whatsapp-float { bottom: calc(22px + env(safe-area-inset-bottom)); }
+.back-to-top { bottom: calc(22px + env(safe-area-inset-bottom)); right: calc(22px + env(safe-area-inset-right)); }
+footer { padding-bottom: env(safe-area-inset-bottom); }
+
+/* Touch screens: WhatsApp button sits on the right above back-to-top, off the main buttons */
+@media (hover: none) and (max-width: 980px) {
+  .whatsapp-float {
+    left: auto;
+    right: calc(14px + env(safe-area-inset-right));
+    bottom: calc(76px + env(safe-area-inset-bottom));
+    width: 48px;
+    height: 48px;
+  }
+  .whatsapp-float svg { width: 27px; height: 27px; }
+  .back-to-top {
+    right: calc(14px + env(safe-area-inset-right));
+    bottom: calc(18px + env(safe-area-inset-bottom));
+  }
+}
+
+/* Unfolded and held sideways: put the delivery illustration back beside the headline */
+@media (min-width: 760px) and (max-width: 980px) and (orientation: landscape) {
+  .hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+    min-height: auto;
+  }
+  .hero-content,
+  .hero-media { grid-row: 1; }
+  .hero-content {
+    grid-column: 1;
+    padding: 32px 12px 64px clamp(24px, 4vw, 40px);
+    padding-left: max(clamp(24px, 4vw, 40px), env(safe-area-inset-left));
+  }
+  .hero-media {
+    grid-column: 2;
+    padding: 24px max(24px, env(safe-area-inset-right)) 40px 0;
+    align-items: center;
+  }
+  .hero h1 { font-size: clamp(1.9rem, 3.7vw, 2.5rem); }
+  .hero-copy { font-size: 0.98rem; }
+  .hero-actions { flex-wrap: wrap; }
+}
+
+/* Short screens held sideways: slimmer header so content isn't squeezed */
+@media (max-height: 700px) and (orientation: landscape) {
+  .site-header { padding-top: 6px; padding-bottom: 6px; }
+  .site-header .brand { width: min(190px, 40vw); }
+  .page-hero { padding-top: 40px; padding-bottom: 40px; }
+}
+
+/* Unfolded portrait (601–760px): let hero buttons sit side by side */
+@media (min-width: 601px) and (max-width: 760px) {
+  .hero-actions { flex-wrap: wrap; }
 }
