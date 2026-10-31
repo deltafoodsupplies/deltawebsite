@@ -1601,6 +1601,7 @@ h3 {
 
 .site-footer img {
   width: min(240px, 60vw);
+  height: auto;
 }
 
 .site-footer div {
@@ -4173,6 +4174,8 @@ h2 {
 
 .footer-brand img {
   width: min(230px, 70vw);
+  height: auto;
+  box-sizing: border-box;
   padding: 12px 14px;
   border-radius: 12px;
   background: rgba(255, 255, 255, 0.96);
