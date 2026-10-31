@@ -1,0 +1,90 @@
+/* Language toggle (see i18n.js) */
+.lang-switch { position: relative; flex: none; order: 5; margin-left: 12px; }
+@media (min-width: 981px) { .site-header .site-nav { margin-left: auto; } }
+
+.lang-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 42px;
+  padding: 6px 10px 6px 12px;
+  border: 1px solid var(--line, #e0e7f2);
+  border-radius: 999px;
+  color: var(--blue-900, #154297);
+  background: #fff;
+  font: 700 0.86rem/1 var(--font-body, Inter, sans-serif);
+  cursor: pointer;
+  transition: background 180ms ease, border-color 180ms ease;
+}
+.lang-btn:hover,
+.lang-btn:focus-visible { background: var(--blue-100, #eef4ff); border-color: var(--blue-700, #2558b8); outline: none; }
+.lang-btn svg { width: 18px; height: 18px; flex: none; }
+.lang-btn .lang-caret { width: 14px; height: 14px; opacity: 0.7; }
+.lang-short { display: none; }
+
+.lang-menu {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 8px);
+  z-index: 90;
+  min-width: 180px;
+  margin: 0;
+  padding: 6px;
+  list-style: none;
+  background: #fff;
+  border: 1px solid var(--line, #e0e7f2);
+  border-radius: 14px;
+  box-shadow: 0 24px 50px rgba(19, 32, 51, 0.16);
+}
+.lang-menu[hidden] { display: none; }
+.lang-menu button {
+  display: block;
+  width: 100%;
+  min-height: 42px;
+  padding: 9px 14px;
+  border: 0;
+  border-radius: 9px;
+  color: var(--ink, #132033);
+  background: none;
+  font: 600 1rem/1.3 var(--font-body, Inter, sans-serif), "Noto Sans Devanagari", "Noto Sans Gujarati", "Noto Sans Gurmukhi", "Noto Nastaliq Urdu", "Noto Sans Bengali", sans-serif;
+  text-align: start;
+  cursor: pointer;
+}
+.lang-menu button:hover,
+.lang-menu button:focus-visible { background: var(--blue-100, #eef4ff); outline: none; }
+.lang-menu button[aria-checked="true"] { color: var(--blue-900, #154297); background: var(--blue-100, #eef4ff); font-weight: 800; }
+
+@media (max-width: 1480px) {
+  .lang-cur { display: none; }
+  .lang-short { display: inline; }
+  .lang-btn { padding: 6px 8px 6px 10px; }
+  .lang-switch { margin-left: 8px; }
+}
+@media (max-width: 980px) {
+  .lang-switch { order: 2; margin-left: auto; margin-right: 8px; }
+}
+
+/* Fonts for each script (loaded on demand) */
+html[data-i18n="hi"] { --i18n-font: "Noto Sans Devanagari"; }
+html[data-i18n="gu"] { --i18n-font: "Noto Sans Gujarati"; }
+html[data-i18n="pa"] { --i18n-font: "Noto Sans Gurmukhi"; }
+html[data-i18n="ur"] { --i18n-font: "Noto Nastaliq Urdu"; }
+html[data-i18n="bn"] { --i18n-font: "Noto Sans Bengali"; }
+
+html[data-i18n] body,
+html[data-i18n] :is(button, input, textarea, select, .button) {
+  font-family: Inter, var(--i18n-font), ui-sans-serif, system-ui, sans-serif;
+}
+html[data-i18n] :is(h1, h2, h3, h4) {
+  font-family: Sora, Inter, var(--i18n-font), ui-sans-serif, system-ui, sans-serif;
+  line-height: 1.32;
+}
+/* Indian scripts need a little more room above and below the letters */
+html[data-i18n] :is(.eyebrow, .section-kicker) { line-height: 1.6; letter-spacing: 0.02em; }
+html[data-i18n] .hero h1 { font-size: clamp(1.9rem, 4.6vw, 3.6rem); }
+html[data-i18n] .mo-heading.mo-in { clip-path: none; }
+
+/* Urdu (Nastaliq) sits tall and reads right-to-left */
+html[data-i18n="ur"] [dir="rtl"] { line-height: 2.05; }
+html[data-i18n="ur"] :is(h1, h2, h3)[dir="rtl"] { line-height: 1.85; }
+html[data-i18n="ur"] .hero h1 { font-size: clamp(1.7rem, 4vw, 3.1rem); }

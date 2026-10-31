@@ -5705,3 +5705,85 @@ footer { padding-bottom: env(safe-area-inset-bottom); }
 @media (min-width: 601px) and (max-width: 760px) {
   .hero-actions { flex-wrap: wrap; }
 }
+
+/* ===== Bold hero headline + turmeric highlight (Oct 2026) ===== */
+.hero h1 {
+  font-size: clamp(2.5rem, 4.4vw, 4.05rem);
+  font-weight: 800;
+  line-height: 1.02;
+  letter-spacing: -0.035em;
+  text-wrap: balance;
+}
+.hero h1 .hl {
+  position: relative;
+  display: inline-block;
+  white-space: nowrap;
+  color: #ffc23d;
+}
+/* hand-drawn turmeric stroke under the words */
+.hero h1 .hl::after {
+  content: "";
+  position: absolute;
+  left: -2%;
+  right: -2%;
+  bottom: -0.16em;
+  height: 0.26em;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 24' preserveAspectRatio='none'%3E%3Cpath d='M4 17 C70 7 150 5 296 10 C220 12 140 15 40 21' fill='none' stroke='%23ff9f1c' stroke-width='6' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat 0 0 / 100% 100%;
+  transform-origin: left center;
+  animation: hl-draw 900ms cubic-bezier(0.6, 0.05, 0.25, 1) 900ms both;
+  pointer-events: none;
+}
+@keyframes hl-draw { from { clip-path: inset(0 100% 0 0); } to { clip-path: inset(0 0 0 0); } }
+@media (prefers-reduced-motion: reduce) { .hero h1 .hl::after { animation: none; } }
+@media (max-width: 980px) { .hero h1 { font-size: clamp(2.2rem, 7.4vw, 3.4rem); } }
+@media (max-width: 600px) { .hero h1 { font-size: clamp(2.05rem, 9.6vw, 2.75rem); line-height: 1.06; } }
+
+/* ===== Accessibility (Oct 2026) ===== */
+/* Readable text colours (WCAG AA 4.5:1 on white) */
+.marquee-track .marquee-name { color: #5a6a82; }
+.map-info em { color: #5f6d84; }
+
+/* One clear, consistent keyboard focus ring everywhere */
+:root { --focus-ring: #1a5fd6; }
+.hero, .page-hero, .site-footer-pro, .cta-band, .final-cta, html.fest .hero, html.fest .page-hero { --focus-ring: #ffc23d; }
+:where(a, button, input, select, textarea, summary, [tabindex]:not([tabindex="-1"]), [contenteditable="true"]):focus-visible {
+  outline: 3px solid var(--focus-ring) !important;
+  outline-offset: 3px !important;
+  border-radius: 6px;
+}
+:where(input, select, textarea):focus-visible { outline-offset: 1px !important; }
+iframe:focus { outline: 3px solid var(--focus-ring) !important; outline-offset: 2px; }
+.skip-link:focus-visible { outline-offset: 0 !important; }
+/* the mega menu stays open while keyboard focus is inside it (already handled by :focus-within) */
+
+/* Floating quick actions wrapper is only a landmark; it adds no layout */
+.quick-actions { display: contents; }
+/* Outlined food ticker: stronger stroke so the words stay legible */
+.ticker-track span { -webkit-text-stroke-color: rgba(21, 66, 151, 0.72); }
+
+/* ===== Product photos on cards (Oct 31 2026) =====
+   Every photo is a cut-out product on the same soft backdrop (#f4f6fa), centred at the same scale. */
+.has-photo .card-photo {
+  position: relative;
+  height: 170px;
+  margin: -24px -24px 18px;
+  overflow: hidden;
+  border-radius: var(--radius) var(--radius) 0 0;
+  border-bottom: 1px solid var(--line);
+  background: #f4f6fa;
+}
+.has-photo .card-photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: transform 500ms cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.has-photo:hover .card-photo img { transform: scale(1.05); }
+.bento-big.has-photo .card-photo { height: clamp(240px, 26vw, 320px); }
+.catalog-card.has-photo .card-photo { height: 200px; }
+@media (max-width: 600px) {
+  .has-photo .card-photo { height: 190px; }
+  .bento-big.has-photo .card-photo { height: 230px; }
+}
+@media (prefers-reduced-motion: reduce) { .has-photo .card-photo img { transition: none; } }

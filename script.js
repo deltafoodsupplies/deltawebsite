@@ -100,15 +100,28 @@ if (!reduceMotion && "IntersectionObserver" in window) {
 // Hero headline word-by-word rise
 const heroTitle = document.querySelector(".hero h1");
 if (heroTitle && !reduceMotion) {
-  const words = heroTitle.textContent.trim().split(/\s+/);
+  let index = 0;
+  const splitInto = (target, text) => {
+    text.split(/(\s+)/).forEach((part) => {
+      if (!part) return;
+      if (/^\s+$/.test(part)) { target.appendChild(document.createTextNode(" ")); return; }
+      const span = document.createElement("span");
+      span.className = "hw";
+      span.style.animationDelay = `${80 + index++ * 55}ms`;
+      span.textContent = part;
+      target.appendChild(span);
+    });
+  };
+  const parts = [...heroTitle.childNodes];
   heroTitle.textContent = "";
-  words.forEach((word, index) => {
-    const span = document.createElement("span");
-    span.className = "hw";
-    span.style.animationDelay = `${80 + index * 55}ms`;
-    span.textContent = word;
-    heroTitle.appendChild(span);
-    if (index < words.length - 1) heroTitle.appendChild(document.createTextNode(" "));
+  parts.forEach((node) => {
+    if (node.nodeType === 3) splitInto(heroTitle, node.nodeValue);
+    else if (node.nodeType === 1) {
+      const text = node.textContent;
+      node.textContent = "";
+      splitInto(node, text.trim());
+      heroTitle.appendChild(node);
+    }
   });
 }
 

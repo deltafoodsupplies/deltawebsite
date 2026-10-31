@@ -1,16 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://deltafoodsupplies.com/</loc>
-    <lastmod>2026-07-12</lastmod>
+    <lastmod>2026-10-31</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
+    <image:image><image:loc>https://deltafoodsupplies.com/assets/og-delta-products.jpg</image:loc></image:image>
+    <image:image><image:loc>https://deltafoodsupplies.com/assets/products/nanak-punjabi-samosa.webp</image:loc></image:image>
+    <image:image><image:loc>https://deltafoodsupplies.com/assets/products/nanak-paneer-block.webp</image:loc></image:image>
+    <image:image><image:loc>https://deltafoodsupplies.com/assets/products/nanak-rasmalai.webp</image:loc></image:image>
+    <image:image><image:loc>https://deltafoodsupplies.com/assets/products/pura-faith-jaggery-powder.webp</image:loc></image:image>
+    <image:image><image:loc>https://deltafoodsupplies.com/assets/products/janakis-mixture-namkeen.webp</image:loc></image:image>
+    <image:image><image:loc>https://deltafoodsupplies.com/assets/products/nanak-rasgulla-bucket.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://deltafoodsupplies.com/products.html</loc>
-    <lastmod>2026-07-12</lastmod>
+    <lastmod>2026-10-31</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
+    <image:image><image:loc>https://deltafoodsupplies.com/assets/products/nanak-desi-ghee-56oz.webp</image:loc></image:image>
+    <image:image><image:loc>https://deltafoodsupplies.com/assets/products/nanak-aloo-tikki.webp</image:loc></image:image>
+    <image:image><image:loc>https://deltafoodsupplies.com/assets/products/kawan-plain-paratha.webp</image:loc></image:image>
+    <image:image><image:loc>https://deltafoodsupplies.com/assets/products/bhaiyajis-cut-okra.webp</image:loc></image:image>
+    <image:image><image:loc>https://deltafoodsupplies.com/assets/products/nanak-angoori-gulab-jamun.webp</image:loc></image:image>
+    <image:image><image:loc>https://deltafoodsupplies.com/assets/products/lg-hing-asafoetida.webp</image:loc></image:image>
+    <image:image><image:loc>https://deltafoodsupplies.com/assets/products/mustard-oil-5-litre.webp</image:loc></image:image>
+    <image:image><image:loc>https://deltafoodsupplies.com/assets/products/veeba-tamarind-chutney.webp</image:loc></image:image>
+    <image:image><image:loc>https://deltafoodsupplies.com/assets/products/balaji-ratlami-sev.webp</image:loc></image:image>
+    <image:image><image:loc>https://deltafoodsupplies.com/assets/products/bru-green-label-coffee.webp</image:loc></image:image>
+    <image:image><image:loc>https://deltafoodsupplies.com/assets/products/exotic-dahi-35lb-bucket.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://deltafoodsupplies.com/service-areas.html</loc>

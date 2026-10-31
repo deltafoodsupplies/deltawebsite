@@ -1,3 +1,35 @@
+(function () {
+  // Scroll effects (scroll-fx.css + scroll-fx.js) are fetched only after the page has loaded,
+  // so they never slow down the first paint or count against page speed.
+  var me = document.currentScript && document.currentScript.src;
+  function loadFx() {
+    var base = (me || "motion.js").replace(/motion\.js[^/]*$/, "");
+    var css = document.createElement("link");
+    css.rel = "stylesheet";
+    css.href = base + "scroll-fx.css?v=20261031";
+    css.onload = function () {
+      var js = document.createElement("script");
+      js.src = base + "scroll-fx.js?v=20261031";
+      js.async = true;
+      document.body.appendChild(js);
+    };
+    document.head.appendChild(css);
+  }
+  // Wait for the visitor's first scroll/tap/keypress (or 4s after load) — the effects only matter once they scroll
+  var started = false, evs = ["scroll", "pointerdown", "keydown", "touchstart", "wheel"];
+  function go() {
+    if (started) return;
+    started = true;
+    evs.forEach(function (e) { removeEventListener(e, go, true); });
+    loadFx();
+  }
+  function arm() {
+    evs.forEach(function (e) { addEventListener(e, go, { capture: true, passive: true }); });
+    setTimeout(go, 4000);
+  }
+  if (document.readyState === "complete") arm(); else addEventListener("load", arm);
+})();
+
 // Motion layer — modern interactions. Skipped entirely for reduced-motion visitors.
 (function () {
   if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;

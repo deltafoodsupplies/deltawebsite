@@ -1,0 +1,103 @@
+/* 404 — "This page took a wrong turn" */
+.lost-hero {
+  --focus-ring: #ffc23d;
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+  align-items: center;
+  gap: clamp(20px, 4vw, 56px);
+  padding: clamp(48px, 7vw, 96px) clamp(20px, 5vw, 72px);
+  overflow: hidden;
+  color: #fff;
+  background:
+    radial-gradient(circle at 80% 30%, rgba(198, 154, 42, 0.26), transparent 36%),
+    linear-gradient(112deg, rgba(7, 29, 73, 0.98) 0%, rgba(21, 66, 151, 0.94) 60%, rgba(147, 195, 31, 0.7) 100%),
+    var(--blue-950);
+}
+.lost-hero .eyebrow { color: #dcf58a; }
+.lost-hero h1 {
+  max-width: 12ch;
+  margin: 10px 0 18px;
+  font-size: clamp(2.6rem, 5.6vw, 4.6rem);
+  font-weight: 800;
+  line-height: 1.02;
+  letter-spacing: -0.035em;
+}
+.lost-hero h1 .hl { position: relative; display: inline-block; white-space: nowrap; color: #ffc23d; }
+.lost-hero h1 .hl::after {
+  content: "";
+  position: absolute;
+  left: -2%; right: -2%; bottom: -0.16em; height: 0.26em;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 24' preserveAspectRatio='none'%3E%3Cpath d='M4 17 C70 7 150 5 296 10 C220 12 140 15 40 21' fill='none' stroke='%23ff9f1c' stroke-width='6' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat 0 0 / 100% 100%;
+  animation: hl-draw 900ms cubic-bezier(0.6, 0.05, 0.25, 1) 500ms both;
+}
+.lost-lede { max-width: 46ch; margin: 0 0 28px; color: rgba(255, 255, 255, 0.88); font-size: clamp(1.02rem, 1.4vw, 1.15rem); line-height: 1.65; }
+.lost-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+.lost-actions .lost-home { color: #fff; background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.4); }
+.lost-actions .lost-home:hover { background: rgba(255, 255, 255, 0.16); }
+
+.lost-scene svg { display: block; width: 100%; height: auto; overflow: visible; }
+.lost-truck { animation: lost-bob 0.9s ease-in-out infinite alternate; }
+.lost-truck-wrap { animation: lost-drive 7s cubic-bezier(0.45, 0, 0.3, 1) infinite; }
+.lost-wheel { transform-box: fill-box; transform-origin: center; animation: lost-spin 0.8s linear infinite; }
+.lost-puffs circle { animation: lost-puff 1.6s ease-out infinite; }
+.lost-puffs circle:nth-child(2) { animation-delay: 0.25s; }
+.lost-puffs circle:nth-child(3) { animation-delay: 0.5s; }
+.lost-q { transform-box: fill-box; transform-origin: center; animation: lost-pop 2.4s ease-in-out infinite; }
+.lost-route { animation: lost-dash 3s linear infinite; }
+.lost-lane { animation: lost-dash 1.2s linear infinite; }
+
+/* drive up to the dead end, stop, look around, back up */
+@keyframes lost-drive {
+  0%   { transform: translate(-30px, 224px) rotate(-9deg); }
+  19%  { transform: translate(75px, 184px) rotate(-6deg); }
+  38%  { transform: translate(170px, 158px) rotate(0deg); }
+  50%  { transform: translate(170px, 158px) rotate(-1.5deg); }
+  58%  { transform: translate(166px, 158px) rotate(1.5deg); }
+  68%  { transform: translate(170px, 158px) rotate(0deg); }
+  84%  { transform: translate(75px, 184px) rotate(-6deg); }
+  100% { transform: translate(-30px, 224px) rotate(-9deg); }
+}
+@keyframes lost-bob { to { transform: translateY(-2px); } }
+@keyframes lost-spin { to { transform: rotate(360deg); } }
+@keyframes lost-puff { from { opacity: 0.4; transform: translate(0, 0) scale(0.8); } to { opacity: 0; transform: translate(-16px, -10px) scale(1.4); } }
+@keyframes lost-pop { 0%, 70%, 100% { transform: scale(1) rotate(0); } 80% { transform: scale(1.12) rotate(-8deg); } 90% { transform: scale(1.05) rotate(6deg); } }
+@keyframes lost-dash { to { stroke-dashoffset: -56; } }
+
+.lost-links { padding-top: clamp(48px, 6vw, 80px); }
+.lost-links h2 { margin-bottom: 26px; font-size: clamp(1.6rem, 3vw, 2.3rem); }
+.lost-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin: 0; padding: 0; list-style: none; }
+.lost-grid a {
+  display: grid;
+  gap: 6px;
+  height: 100%;
+  padding: 20px 22px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  color: var(--ink);
+  background: #fff;
+  text-decoration: none;
+  transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+}
+.lost-grid a:hover { transform: translateY(-3px); border-color: var(--blue-700); box-shadow: 0 18px 40px rgba(7, 29, 73, 0.1); }
+.lost-grid strong { color: var(--blue-950); font-family: var(--font-display); font-size: 1.12rem; }
+.lost-grid strong::after { content: " →"; color: var(--blue-700); }
+.lost-grid span { color: var(--muted); font-size: 0.95rem; line-height: 1.5; }
+
+/* festival themes recolour the hero like other pages */
+html.fest .lost-hero { background: radial-gradient(circle at 80% 30%, var(--fx-glow), transparent 40%), linear-gradient(115deg, var(--fx-night) 0%, var(--fx-mid) 60%, var(--fx-warm) 100%); }
+
+@media (max-width: 860px) {
+  .lost-hero { grid-template-columns: 1fr; }
+  .lost-scene { order: -1; max-width: 520px; }
+  .lost-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 560px) { .lost-grid { grid-template-columns: 1fr; } }
+@media (prefers-reduced-motion: reduce) {
+  .lost-hero *, .lost-hero h1 .hl::after { animation: none !important; }
+  .lost-truck-wrap { transform: translate(170px, 158px); }
+}
+
+.lost-hero > .fx-sky { z-index: 0; }
+.lost-hero > .fx-moon, .lost-hero > .fx-diyas { display: none; }
+.lost-copy, .lost-scene { position: relative; z-index: 1; }

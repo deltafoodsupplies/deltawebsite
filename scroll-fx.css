@@ -1,0 +1,139 @@
+/* ==========================================================
+   Scroll storytelling (Oct 31 2026)
+   Loaded by motion.js after the page renders (never blocks the first paint). All decorative. Content is fully visible without these effects;
+   scroll-linked parts only run where the browser supports them.
+   ========================================================== */
+
+/* ---- 1. Truck scroll bar: Delta truck drives the road to the Contact pin ---- */
+.mo-road { display: none; }
+@media (prefers-reduced-motion: no-preference) and (min-width: 601px) {
+  .mo-road {
+    position: fixed;
+    inset: 0 0 auto 0;
+    z-index: 81;
+    display: block;
+    height: 16px;
+    pointer-events: none;
+  }
+  .mo-road::before { /* the road */
+    content: "";
+    position: absolute;
+    left: 0; right: 0; top: 1px;
+    height: 0;
+    border-top: 2px dashed rgba(21, 66, 151, 0.22);
+  }
+  .mo-road .mo-pin {
+    position: absolute;
+    top: -1px;
+    width: 7px; height: 7px;
+    margin-left: -3.5px;
+    border-radius: 50%;
+    background: #c9d3e6;
+    transition: background 300ms ease, transform 300ms ease;
+  }
+  .mo-road .mo-pin.is-passed { background: #f6a21a; transform: scale(1.25); }
+  .mo-road .mo-pin:last-of-type { width: 9px; height: 9px; margin-left: -9px; top: -2px; background: #93c31f; }
+  .mo-road .mo-truck {
+    position: absolute;
+    top: 3px; left: 0;
+    width: 30px; height: 15px;
+    transform: translateX(calc(var(--mo-progress, 0) * (100vw - 40px)));
+    filter: drop-shadow(0 2px 3px rgba(7, 29, 73, 0.25));
+    transition: opacity 300ms ease;
+  }
+  .mo-road .mo-wheel { transform-box: fill-box; transform-origin: center; }
+  .mo-road.is-moving .mo-wheel { animation: mo-spin 0.5s linear infinite; }
+  @keyframes mo-spin { to { transform: rotate(360deg); } }
+  .mo-road.is-top .mo-truck { opacity: 0; }
+  /* the old thin bar becomes the travelled part of the road */
+  .mo-progress { height: 3px; background: linear-gradient(90deg, #c69a2a, #f6a21a, #93c31f); }
+}
+
+/* ---- 2. Delivery routes on the service map ---- */
+.map-routes { pointer-events: none; }
+.map-routes path { fill: none; stroke: #f6a21a; stroke-width: 3.5; stroke-linecap: round; opacity: 0.9; }
+.map-routes circle { fill: #ffc23d; stroke: #fff; stroke-width: 2; }
+
+/* ---- 3. Turmeric marker behind key words in headings ---- */
+.hl2 {
+  padding: 0 0.08em;
+  margin: 0 -0.04em;
+  background-image: linear-gradient(transparent 58%, rgba(255, 178, 31, 0.5) 58%, rgba(255, 178, 31, 0.5) 90%, transparent 90%);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+
+/* ---- 5. Rangoli that blooms at the bottom of the page ---- */
+.site-footer-pro { position: relative; overflow: hidden; }
+.site-footer-pro > :not(.mo-rangoli) { position: relative; z-index: 1; }
+.mo-rangoli {
+  position: absolute;
+  right: -90px;
+  bottom: -110px;
+  z-index: 0;
+  width: 420px;
+  height: 420px;
+  opacity: 0.16;
+  pointer-events: none;
+  --r1: #c69a2a; --r2: #93c31f; --r3: #4f86e6; --r4: #f6a21a;
+}
+html.fest .mo-rangoli { opacity: 0.28; --r1: var(--fx-accent, #ffd36b); --r2: var(--fx-btn1, #e0457b); --r3: var(--fx-warm, #c2531a); --r4: var(--fx-spark, #ffd36b); }
+.mo-rangoli g { transform-box: view-box; transform-origin: 50% 50%; }
+@media (max-width: 600px) { .mo-rangoli { width: 300px; height: 300px; right: -80px; bottom: -90px; } }
+
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    /* 2. routes draw out from Dallas one after another */
+    .map-routes path {
+      stroke-dasharray: 1;
+      animation: mo-draw linear both;
+      animation-timeline: view();
+      animation-range: entry calc(30% + var(--i) * 7%) cover calc(42% + var(--i) * 4%);
+    }
+    .map-routes circle {
+      transform-box: fill-box;
+      transform-origin: center;
+      animation: mo-pop linear both;
+      animation-timeline: view();
+      animation-range: cover calc(40% + var(--i) * 4%) cover calc(46% + var(--i) * 4%);
+    }
+    @keyframes mo-draw { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+    @keyframes mo-pop { from { transform: scale(0); } to { transform: scale(1); } }
+
+    /* 3. marker sweeps in under the words */
+    .hl2 {
+      animation: mo-mark linear both;
+      animation-timeline: view();
+      animation-range: entry 60% cover 38%;
+    }
+    @keyframes mo-mark { from { background-size: 0% 100%; } to { background-size: 100% 100%; } }
+
+    /* 4. product cards land and stack like boxes on a pallet
+       (uses the separate translate/rotate/scale properties so hover tilt still works) */
+    .bento-grid > * {
+      animation: mo-stack linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 90%;
+    }
+    .bento-grid > :nth-child(odd) { --mo-r: -3deg; }
+    .bento-grid > :nth-child(even) { --mo-r: 2.5deg; }
+    .bento-grid > :nth-child(3n) { --mo-r: -1.5deg; }
+    @keyframes mo-stack {
+      from { translate: 0 70px; rotate: var(--mo-r, 0deg); scale: 0.94; }
+      to { translate: 0 0; rotate: 0deg; scale: 1; }
+    }
+
+    /* 5. rangoli opens ring by ring */
+    .mo-rangoli g {
+      animation: mo-bloom linear both;
+      animation-timeline: view();
+    }
+    .mo-rangoli .rg1 { animation-range: entry 0% entry 40%; }
+    .mo-rangoli .rg2 { animation-range: entry 15% entry 60%; }
+    .mo-rangoli .rg3 { animation-range: entry 30% entry 80%; }
+    .mo-rangoli .rg4 { animation-range: entry 45% entry 100%; }
+    @keyframes mo-bloom { from { scale: 0.2; rotate: -40deg; opacity: 0; } to { scale: 1; rotate: 0deg; opacity: 1; } }
+  }
+}
