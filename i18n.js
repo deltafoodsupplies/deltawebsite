@@ -620,13 +620,15 @@
   function init() {
     buildSwitch();
     var start = "en";
+    // Pages written in Telugu/Tamil open in that language unless ?lang= says otherwise
+    var pageLang = document.documentElement.getAttribute("data-page-lang");
     try {
       var q = new URLSearchParams(location.search).get("lang");
       if (q && COL[q] || q === "en") { start = q; localStorage.setItem("dfs-lang", q); }
-      else start = localStorage.getItem("dfs-lang") || "en";
-    } catch (e) {}
+      else start = (pageLang && COL[pageLang] ? pageLang : null) || localStorage.getItem("dfs-lang") || "en";
+    } catch (e) { if (pageLang && COL[pageLang]) start = pageLang; }
     setLang(start, false);
-    if (start === "en") suggestLanguage();
+    if (start === "en" && !pageLang) suggestLanguage();
   }
 
   // If the visitor's phone/browser prefers one of our languages (before English), offer it once.

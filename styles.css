@@ -5794,3 +5794,8 @@ iframe:focus { outline: 3px solid var(--focus-ring) !important; outline-offset: 
 /* Guide pages: readable text inside the dark call-to-action band, and the "next festival" link */
 .article-body .cta-band p { color: rgba(255, 255, 255, 0.86); }
 .article-body .guide-next { margin-top: 36px; color: var(--muted); font-weight: 600; }
+
+/* Coming-soon state pages */
+.copy-block .soon-note { background: #fff6dc; border-left: 4px solid #e0a100; padding: 14px 18px; border-radius: 10px; color: #3d2f00; }
+.lang-alt { margin: 0 0 18px; font-weight: 600; }
+.lang-alt a { color: inherit; }
