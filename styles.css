@@ -5790,3 +5790,7 @@ iframe:focus { outline: 3px solid var(--focus-ring) !important; outline-offset: 
   .bento-big.has-photo .card-photo { height: 230px; }
 }
 @media (prefers-reduced-motion: reduce) { .has-photo .card-photo img { transition: none; } }
+
+/* Guide pages: readable text inside the dark call-to-action band, and the "next festival" link */
+.article-body .cta-band p { color: rgba(255, 255, 255, 0.86); }
+.article-body .guide-next { margin-top: 36px; color: var(--muted); font-weight: 600; }

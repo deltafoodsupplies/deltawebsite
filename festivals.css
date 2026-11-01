@@ -1,6 +1,6 @@
 /* ==========================================================
    Festival themes — switch on automatically by date (see festivals.js).
-   Preview any theme with ?festival=diwali|navratri|holi|ramadan|eid|holidays|sankranti|ugadi|vaisakhi|rakhi|janmashtami|ganesh|onam|gurpurab
+   Preview any theme with ?festival=diwali|navratri|holi|ramadan|eid|holidays|sankranti|ugadi|vaisakhi|rakhi|janmashtami|ganesh|onam|gurpurab|july4|indiaday
    and turn themes off for a visit with ?festival=off.
    ========================================================== */
 
@@ -122,6 +122,26 @@ html.fest-gurpurab {
   --fx-line: linear-gradient(90deg, #1d3a8a, #e8891a 50%, #1d3a8a);
   --fx-garland: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='22' viewBox='0 0 48 22'%3E%3Cpath d='M0 2 Q24 9 48 2' fill='none' stroke='%235d4037' stroke-width='1'/%3E%3Cpath d='M12 5 V8 M36 5 V8' stroke='%235d4037' stroke-width='1'/%3E%3Cellipse cx='12' cy='12' rx='3.2' ry='4.4' fill='%23ffcc33'/%3E%3Cellipse cx='12' cy='12' rx='1.6' ry='2.4' fill='%23fff8d6'/%3E%3Cellipse cx='36' cy='12' rx='3.2' ry='4.4' fill='%23ffcc33'/%3E%3Cellipse cx='36' cy='12' rx='1.6' ry='2.4' fill='%23fff8d6'/%3E%3C/svg%3E");
   --fx-garland-size: 48px 22px; --fx-garland-h: 22px;
+}
+
+/* ---- Independence days (celebration only): July 4th, India Aug 15 ---- */
+html.fest-july4 {
+  --fx-night: #0b1a3f; --fx-mid: #1b2f6b; --fx-warm: #9e1b2f;
+  --fx-glow: rgba(255, 255, 255, 0.2); --fx-glow2: rgba(239, 83, 80, 0.22);
+  --fx-accent: #ffffff; --fx-spark: #ffffff;
+  --fx-btn1: #ffffff; --fx-btn2: #e3ebff; --fx-btn-text: #0b1a3f;
+  --fx-line: linear-gradient(90deg, #b22234, #ffffff 50%, #3c3b6e);
+  --fx-garland: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='96' height='24' viewBox='0 0 96 24'%3E%3Cpath d='M0 2 Q48 9 96 2' fill='none' stroke='%239e9e9e' stroke-width='1.2'/%3E%3Cpath d='M4 3.8 L22 5.2 L13 21 Z' fill='%23d32f2f'/%3E%3Cpath d='M28 5.8 L46 5.5 L37 22 Z' fill='%23ffffff'/%3E%3Cpath d='M50 5.5 L68 5.8 L59 22 Z' fill='%231e3a8a'/%3E%3Cpath d='M55.5 9 l1.1 2.3 2.5.3-1.8 1.7.5 2.5-2.3-1.2-2.3 1.2.5-2.5-1.8-1.7 2.5-.3z' fill='%23fff'/%3E%3Cpath d='M74 5.2 L92 3.8 L83 21 Z' fill='%23d32f2f'/%3E%3C/svg%3E");
+  --fx-garland-size: 96px 24px; --fx-garland-h: 24px;
+}
+html.fest-indiaday {
+  --fx-night: #0d1f4a; --fx-mid: #173a7a; --fx-warm: #0f6b3a;
+  --fx-glow: rgba(255, 153, 51, 0.34); --fx-glow2: rgba(19, 136, 8, 0.24);
+  --fx-accent: #ffb366; --fx-spark: #ffffff;
+  --fx-btn1: #ff9933; --fx-btn2: #ffc58a; --fx-btn-text: #0d1f4a;
+  --fx-line: linear-gradient(90deg, #ff9933, #ffffff 50%, #138808);
+  --fx-garland: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='72' height='24' viewBox='0 0 72 24'%3E%3Cpath d='M0 2 Q36 9 72 2' fill='none' stroke='%239e9e9e' stroke-width='1.2'/%3E%3Cpath d='M4 3.6 L20 4.6 L12 20 Z' fill='%23ff9933'/%3E%3Cpath d='M28 5.2 L44 5.2 L36 21 Z' fill='%23ffffff'/%3E%3Cpath d='M52 4.6 L68 3.6 L60 20 Z' fill='%23138808'/%3E%3C/svg%3E");
+  --fx-garland-size: 72px 24px; --fx-garland-h: 24px;
 }
 
 /* ---- Shared festival look ---- */

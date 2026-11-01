@@ -1,7 +1,7 @@
 // Festival themes — turn on automatically by date (Dallas time).
 // To change the schedule, edit FESTIVALS below: [theme, first day, last day] (inclusive).
 // Preview a theme on any page with ?festival=diwali (navratri, holi, ramadan, eid, holidays,
-// sankranti, ugadi, vaisakhi, rakhi, janmashtami, ganesh, onam, gurpurab);
+// sankranti, ugadi, vaisakhi, rakhi, janmashtami, ganesh, onam, gurpurab, july4, indiaday);
 // ?festival=off hides themes for the visit, ?festival=auto goes back to the schedule.
 (function () {
   var FESTIVALS = [
@@ -15,7 +15,9 @@
     ["ugadi",       "2027-04-03", "2027-04-09"], // Ugadi Apr 7–8
     ["vaisakhi",    "2027-04-11", "2027-04-16"], // Vaisakhi, Pohela Boishakh, Puthandu Apr 14–15
     ["eid",         "2027-05-13", "2027-05-19"], // Eid al-Adha ~May 16–17
-    ["rakhi",       "2027-08-12", "2027-08-18"], // Raksha Bandhan Aug 17
+    ["july4",       "2027-07-01", "2027-07-05"], // US Independence Day
+    ["indiaday",    "2027-08-13", "2027-08-15"], // India Independence Day Aug 15
+    ["rakhi",       "2027-08-16", "2027-08-19"], // Raksha Bandhan Aug 17
     ["janmashtami", "2027-08-21", "2027-08-26"], // Janmashtami Aug 25
     ["ganesh",      "2027-08-31", "2027-09-07"], // Ganesh Chaturthi Sep 4
     ["onam",        "2027-09-08", "2027-09-13"], // Thiruvonam Sep 12
@@ -30,8 +32,10 @@
     ["ugadi",       "2028-03-23", "2028-03-28"], // Ugadi Mar 27
     ["vaisakhi",    "2028-04-10", "2028-04-15"], // Vaisakhi, Pohela Boishakh, Puthandu Apr 13–14
     ["eid",         "2028-05-03", "2028-05-09"], // Eid al-Adha ~May 5–6
+    ["july4",       "2028-07-01", "2028-07-05"], // US Independence Day
     ["rakhi",       "2028-08-01", "2028-08-06"], // Raksha Bandhan Aug 5
-    ["janmashtami", "2028-08-09", "2028-08-14"], // Janmashtami Aug 13
+    ["janmashtami", "2028-08-09", "2028-08-13"], // Janmashtami Aug 13
+    ["indiaday",    "2028-08-14", "2028-08-16"], // India Independence Day Aug 15
     ["ganesh",      "2028-08-19", "2028-08-29"], // Ganesh Chaturthi Aug 23
     ["onam",        "2028-08-30", "2028-09-02"], // Thiruvonam Sep 1
     ["navratri",    "2028-09-16", "2028-09-28"], // Navratri Sep 19, Dussehra Sep 27
@@ -41,20 +45,22 @@
   ];
 
   var GREETINGS = {
-    diwali:   { text: "Happy Diwali from the Delta family", href: "diwali-sweets-stocking-guide.html", icon: "diya" },
-    navratri: { text: "Happy Navratri & Dussehra from the Delta family", icon: "diya" },
-    holi:     { text: "Happy Holi from the Delta family", icon: "colors" },
-    ramadan:  { text: "Ramadan Mubarak from the Delta family", icon: "moon" },
-    eid:      { text: "Eid Mubarak from the Delta family", icon: "moon" },
-    holidays: { text: "Happy Holidays from the Delta family", icon: "star" },
-    sankranti:   { text: "Happy Sankranti, Pongal & Lohri from the Delta family", icon: "kite" },
-    ugadi:       { text: "Happy Ugadi from the Delta family", icon: "leaf" },
-    vaisakhi:    { text: "Happy Vaisakhi & New Year from the Delta family", icon: "wheat" },
-    rakhi:       { text: "Happy Raksha Bandhan from the Delta family", icon: "rakhi" },
-    janmashtami: { text: "Happy Janmashtami from the Delta family", icon: "feather" },
-    ganesh:      { text: "Happy Ganesh Chaturthi from the Delta family", icon: "marigold" },
-    onam:        { text: "Happy Onam from the Delta family", icon: "pookalam" },
-    gurpurab:    { text: "Happy Gurpurab from the Delta family", icon: "diya" }
+    diwali:      { text: "Happy Diwali from the Delta family", href: "diwali-sweets-stocking-guide.html", icon: "diya" },
+    navratri:    { text: "Happy Navratri & Dussehra from the Delta family", href: "navratri-dussehra-stocking-guide.html", icon: "diya" },
+    holi:        { text: "Happy Holi from the Delta family", href: "holi-stocking-guide.html", icon: "colors" },
+    ramadan:     { text: "Ramadan Mubarak from the Delta family", href: "ramadan-eid-stocking-guide.html", icon: "moon" },
+    eid:         { text: "Eid Mubarak from the Delta family", href: "ramadan-eid-stocking-guide.html", icon: "moon" },
+    holidays:    { text: "Happy Holidays from the Delta family", href: "holiday-party-catering-guide.html", icon: "star" },
+    sankranti:   { text: "Happy Sankranti, Pongal & Lohri from the Delta family", href: "sankranti-pongal-lohri-stocking-guide.html", icon: "kite" },
+    ugadi:       { text: "Happy Ugadi from the Delta family", href: "ugadi-stocking-guide.html", icon: "leaf" },
+    vaisakhi:    { text: "Happy Vaisakhi & New Year from the Delta family", href: "vaisakhi-new-year-stocking-guide.html", icon: "wheat" },
+    rakhi:       { text: "Happy Raksha Bandhan from the Delta family", href: "raksha-bandhan-stocking-guide.html", icon: "rakhi" },
+    janmashtami: { text: "Happy Janmashtami from the Delta family", href: "janmashtami-stocking-guide.html", icon: "feather" },
+    ganesh:      { text: "Happy Ganesh Chaturthi from the Delta family", href: "ganesh-chaturthi-stocking-guide.html", icon: "marigold" },
+    onam:        { text: "Happy Onam from the Delta family", href: "onam-stocking-guide.html", icon: "pookalam" },
+    gurpurab:    { text: "Happy Gurpurab from the Delta family", href: "gurpurab-langar-stocking-guide.html", icon: "diya" },
+    july4:       { text: "Happy 4th of July from the Delta family", href: "independence-day-party-stocking-guide.html", icon: "firework" },
+    indiaday:    { text: "Happy Indian Independence Day from the Delta family", href: "independence-day-party-stocking-guide.html", icon: "tricolor" }
   };
 
   function todayInDallas() {
@@ -102,6 +108,8 @@
     rakhi: '<path d="M1 17 H33" stroke="#e53935" stroke-width="2"/><circle cx="17" cy="17" r="9" fill="#ffd54f"/><g fill="#e53935"><circle cx="17" cy="11.5" r="3"/><circle cx="22.5" cy="17" r="3"/><circle cx="17" cy="22.5" r="3"/><circle cx="11.5" cy="17" r="3"/></g><circle cx="17" cy="17" r="2.8" fill="#fff59d"/>',
     feather: '<path d="M17 33 V6" stroke="#c9a24a" stroke-width="1.2"/><ellipse cx="17" cy="13" rx="8" ry="12" fill="#2e7d32"/><ellipse cx="17" cy="14" rx="5.4" ry="7" fill="#1565c0"/><ellipse cx="17" cy="15" rx="3.2" ry="4.2" fill="#00897b"/><ellipse cx="17" cy="15.5" rx="1.6" ry="2.1" fill="#ffd54f"/>',
     marigold: '<circle cx="17" cy="17" r="13" fill="#e65100"/><circle cx="17" cy="17" r="10" fill="#f6a21a"/><circle cx="17" cy="17" r="6.6" fill="#ffc23d"/><circle cx="17" cy="17" r="2.6" fill="#c2531a"/>',
+    firework: '<g stroke-width="2.2" stroke-linecap="round"><path d="M17 17 L17 4 M17 17 L28 10 M17 17 L28 24 M17 17 L17 30 M17 17 L6 24 M17 17 L6 10" stroke="#ef5350"/><path d="M17 17 L23 5 M17 17 L30 17 M17 17 L23 29 M17 17 L11 29 M17 17 L4 17 M17 17 L11 5" stroke="#90caf9"/></g><circle cx="17" cy="17" r="2.6" fill="#fff"/>',
+    tricolor: '<rect x="3" y="6" width="28" height="7.4" rx="2" fill="#ff9933"/><rect x="3" y="13.4" width="28" height="7.4" fill="#ffffff"/><rect x="3" y="20.8" width="28" height="7.4" rx="2" fill="#138808"/><circle cx="17" cy="17.1" r="2.8" fill="none" stroke="#000080" stroke-width="1"/>',
     pookalam: '<circle cx="17" cy="17" r="15" fill="#f6a21a"/><circle cx="17" cy="17" r="11" fill="#fff8e1"/><circle cx="17" cy="17" r="8" fill="#fdd835"/><circle cx="17" cy="17" r="5" fill="#e53935"/><circle cx="17" cy="17" r="2.2" fill="#fff8e1"/>'
   };
 
@@ -113,7 +121,7 @@
     rakhi: { cls: "fx-sway", svg: '<path d="M0 50 C25 40 75 40 100 50" stroke="#e53935" stroke-width="4" fill="none"/><path d="M0 50 C25 40 75 40 100 50" stroke="#ffd54f" stroke-width="1.4" stroke-dasharray="4 5" fill="none"/><circle cx="50" cy="46" r="24" fill="#ffd54f"/>' + (function () { var r = ""; for (var i = 0; i < 8; i++) r += '<circle cx="50" cy="30" r="7" fill="#e53935" transform="rotate(' + i * 45 + ' 50 46)"/>'; return r; })() + '<circle cx="50" cy="46" r="10" fill="#fff59d"/><circle cx="50" cy="46" r="4" fill="#c62828"/>' },
     vaisakhi: { cls: "fx-sway", svg: '<g stroke="#ffd54f" stroke-width="2.4" fill="none"><path d="M50 98 V30"/><path d="M50 98 Q40 60 28 34"/><path d="M50 98 Q60 60 72 34"/></g><g fill="#ffcf3a">' + (function () { var r = ""; [[50, 14], [28, 20], [72, 20]].forEach(function (p) { for (var k = 0; k < 4; k++) { r += '<ellipse cx="' + (p[0] - 4) + '" cy="' + (p[1] + k * 7) + '" rx="3.2" ry="5.5" transform="rotate(-25 ' + (p[0] - 4) + " " + (p[1] + k * 7) + ')"/><ellipse cx="' + (p[0] + 4) + '" cy="' + (p[1] + k * 7) + '" rx="3.2" ry="5.5" transform="rotate(25 ' + (p[0] + 4) + " " + (p[1] + k * 7) + ')"/>'; } }); return r; })() + '</g>' }
   };
-  var PETALS = { ganesh: ["#f6a21a", "#ffc23d", "#e53935"], onam: ["#fdd835", "#f6a21a", "#fff8e1", "#e53935"], ugadi: ["#43a047", "#ffc23d", "#fff8e1"], vaisakhi: ["#ffd54f", "#ff8f00", "#fff3c4"] };
+  var PETALS = { july4: ["#ef5350", "#ffffff", "#64b5f6"], indiaday: ["#ff9933", "#ffffff", "#138808"], ganesh: ["#f6a21a", "#ffc23d", "#e53935"], onam: ["#fdd835", "#f6a21a", "#fff8e1", "#e53935"], ugadi: ["#43a047", "#ffc23d", "#fff8e1"], vaisakhi: ["#ffd54f", "#ff8f00", "#fff3c4"] };
 
   function diya() {
     return '<svg class="fx-diya" viewBox="0 0 34 34" aria-hidden="true">' +
