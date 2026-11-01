@@ -1,6 +1,6 @@
 /* ==========================================================
    Festival themes — switch on automatically by date (see festivals.js).
-   Preview any theme with ?festival=diwali|navratri|holi|ramadan|eid|holidays
+   Preview any theme with ?festival=diwali|navratri|holi|ramadan|eid|holidays|sankranti|ugadi|vaisakhi|rakhi|janmashtami|ganesh|onam|gurpurab
    and turn themes off for a visit with ?festival=off.
    ========================================================== */
 
@@ -47,6 +47,81 @@ html.fest-holidays {
   --fx-line: linear-gradient(90deg, #c62828, #f2c14e 50%, #2e7d32);
   --fx-garland: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='96' height='22' viewBox='0 0 96 22'%3E%3Cpath d='M0 3 Q24 8 48 3 Q72 8 96 3' fill='none' stroke='%232f5d3a' stroke-width='1.4'/%3E%3Crect x='10.5' y='4.4' width='3' height='3' rx='.6' fill='%232f5d3a'/%3E%3Crect x='34.5' y='4.4' width='3' height='3' rx='.6' fill='%232f5d3a'/%3E%3Crect x='58.5' y='4.4' width='3' height='3' rx='.6' fill='%232f5d3a'/%3E%3Crect x='82.5' y='4.4' width='3' height='3' rx='.6' fill='%232f5d3a'/%3E%3Cellipse cx='12' cy='12' rx='3.2' ry='4.6' fill='%23e53935'/%3E%3Cellipse cx='36' cy='12' rx='3.2' ry='4.6' fill='%23ffd54f'/%3E%3Cellipse cx='60' cy='12' rx='3.2' ry='4.6' fill='%2343a047'/%3E%3Cellipse cx='84' cy='12' rx='3.2' ry='4.6' fill='%231e88e5'/%3E%3C/svg%3E");
   --fx-garland-size: 96px 22px; --fx-garland-h: 22px;
+}
+
+/* ---- More festivals (Oct 31 2026): Sankranti/Pongal/Lohri, Ugadi, Vaisakhi, Raksha Bandhan,
+   Janmashtami, Ganesh Chaturthi, Onam, Gurpurab ---- */
+html.fest-sankranti {
+  --fx-night: #0b2f55; --fx-mid: #13609e; --fx-warm: #ef7d12;
+  --fx-glow: rgba(255, 207, 58, 0.38); --fx-glow2: rgba(255, 255, 255, 0.14);
+  --fx-accent: #ffd54f; --fx-spark: #fff3c4;
+  --fx-btn1: #ffb300; --fx-btn2: #ffd54f; --fx-btn-text: #0b2f55;
+  --fx-line: linear-gradient(90deg, #e53935, #fbc02d 33%, #1e88e5 66%, #43a047);
+  --fx-garland: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='96' height='28' viewBox='0 0 96 28'%3E%3Cpath d='M0 2 Q48 10 96 2' fill='none' stroke='%238d6e63' stroke-width='1.2'/%3E%3Cg%3E%3Cpath d='M14 4 L21 12 L14 22 L7 12 Z' fill='%23e53935'/%3E%3Cpath d='M14 4 V22 M7 12 H21' stroke='%23fff' stroke-width='.8' opacity='.7'/%3E%3C/g%3E%3Cg%3E%3Cpath d='M38 6 L45 14 L38 24 L31 14 Z' fill='%23fbc02d'/%3E%3Cpath d='M38 6 V24 M31 14 H45' stroke='%23fff' stroke-width='.8' opacity='.7'/%3E%3C/g%3E%3Cg%3E%3Cpath d='M58 6 L65 14 L58 24 L51 14 Z' fill='%231e88e5'/%3E%3Cpath d='M58 6 V24 M51 14 H65' stroke='%23fff' stroke-width='.8' opacity='.7'/%3E%3C/g%3E%3Cg%3E%3Cpath d='M82 4 L89 12 L82 22 L75 12 Z' fill='%2343a047'/%3E%3Cpath d='M82 4 V22 M75 12 H89' stroke='%23fff' stroke-width='.8' opacity='.7'/%3E%3C/g%3E%3C/svg%3E");
+  --fx-garland-size: 96px 28px; --fx-garland-h: 28px;
+}
+html.fest-ugadi {
+  --fx-night: #0c2e14; --fx-mid: #1f6b2c; --fx-warm: #c8960e;
+  --fx-glow: rgba(255, 213, 79, 0.32); --fx-glow2: rgba(129, 199, 132, 0.22);
+  --fx-accent: #ffe082; --fx-spark: #fff8d6;
+  --fx-btn1: #f6b21a; --fx-btn2: #ffe082; --fx-btn-text: #0c2e14;
+  --fx-line: linear-gradient(90deg, #2e7d32, #f6a21a 50%, #2e7d32);
+  --fx-garland: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='30' viewBox='0 0 64 30'%3E%3Cpath d='M0 2 Q32 7 64 2' fill='none' stroke='%238d6e63' stroke-width='1.2'/%3E%3Cpath d='M8 4 C3 12 5 22 8 28 C11 22 13 12 8 4Z' fill='%232e7d32'/%3E%3Cpath d='M8 6 V26' stroke='%23a5d6a7' stroke-width='.6'/%3E%3Cpath d='M24 5 C19 13 21 22 24 27 C27 22 29 13 24 5Z' fill='%2343a047'/%3E%3Cpath d='M24 7 V25' stroke='%23c8e6c9' stroke-width='.6'/%3E%3Ccircle cx='40' cy='9' r='5' fill='%23f6a21a'/%3E%3Ccircle cx='40' cy='9' r='3' fill='%23ffc23d'/%3E%3Cpath d='M56 4 C51 12 53 22 56 28 C59 22 61 12 56 4Z' fill='%232e7d32'/%3E%3Cpath d='M56 6 V26' stroke='%23a5d6a7' stroke-width='.6'/%3E%3C/svg%3E");
+  --fx-garland-size: 64px 30px; --fx-garland-h: 30px;
+}
+html.fest-vaisakhi {
+  --fx-night: #2b1a03; --fx-mid: #8a4b06; --fx-warm: #e0a106;
+  --fx-glow: rgba(255, 213, 79, 0.36); --fx-glow2: rgba(21, 101, 192, 0.2);
+  --fx-accent: #ffe082; --fx-spark: #ffe9a8;
+  --fx-btn1: #ffa000; --fx-btn2: #ffe082; --fx-btn-text: #2b1a03;
+  --fx-line: linear-gradient(90deg, #ff8f00, #fdd835 33%, #1565c0 66%, #2e7d32);
+  --fx-garland: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='96' height='24' viewBox='0 0 96 24'%3E%3Cpath d='M0 2 Q48 9 96 2' fill='none' stroke='%238d6e63' stroke-width='1.3'/%3E%3Cpath d='M4 3.8 L22 5.2 L13 21 Z' fill='%23ff8f00'/%3E%3Cpath d='M28 5.8 L46 5.5 L37 22 Z' fill='%23fdd835'/%3E%3Cpath d='M50 5.5 L68 5.8 L59 22 Z' fill='%231565c0'/%3E%3Cpath d='M74 5.2 L92 3.8 L83 21 Z' fill='%232e7d32'/%3E%3C/svg%3E");
+  --fx-garland-size: 96px 24px; --fx-garland-h: 24px;
+}
+html.fest-rakhi {
+  --fx-night: #2a0716; --fx-mid: #7d1238; --fx-warm: #d84a63;
+  --fx-glow: rgba(255, 213, 79, 0.32); --fx-glow2: rgba(255, 128, 171, 0.22);
+  --fx-accent: #ffd54f; --fx-spark: #ffe9a8;
+  --fx-btn1: #ffb300; --fx-btn2: #ffd54f; --fx-btn-text: #2a0716;
+  --fx-line: linear-gradient(90deg, #c62828, #ffd54f 50%, #c62828);
+  --fx-garland: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='26' viewBox='0 0 80 26'%3E%3Cpath d='M0 3 Q40 12 80 3' fill='none' stroke='%23c62828' stroke-width='2'/%3E%3Cpath d='M0 3 Q40 12 80 3' fill='none' stroke='%23ffd54f' stroke-width='.7' stroke-dasharray='2 3'/%3E%3Cg transform='translate(40 13)'%3E%3Ccircle r='8' fill='%23ffd54f'/%3E%3Cg fill='%23e53935'%3E%3Ccircle cx='0' cy='-5' r='2.6'/%3E%3Ccircle cx='5' cy='0' r='2.6'/%3E%3Ccircle cx='0' cy='5' r='2.6'/%3E%3Ccircle cx='-5' cy='0' r='2.6'/%3E%3C/g%3E%3Ccircle r='2.6' fill='%23fff59d'/%3E%3C/g%3E%3Ccircle cx='12' cy='6' r='2' fill='%23ffd54f'/%3E%3Ccircle cx='68' cy='6' r='2' fill='%23ffd54f'/%3E%3C/svg%3E");
+  --fx-garland-size: 80px 26px; --fx-garland-h: 26px;
+}
+html.fest-janmashtami {
+  --fx-night: #06143a; --fx-mid: #0f3f7a; --fx-warm: #00897b;
+  --fx-glow: rgba(255, 213, 79, 0.28); --fx-glow2: rgba(0, 188, 212, 0.22);
+  --fx-accent: #ffd54f; --fx-spark: #fff6d8;
+  --fx-btn1: #ffc107; --fx-btn2: #ffe082; --fx-btn-text: #06143a;
+  --fx-line: linear-gradient(90deg, #1565c0, #00897b 40%, #ffd54f 70%, #2e7d32);
+  --fx-garland: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='72' height='30' viewBox='0 0 72 30'%3E%3Cpath d='M0 2 Q36 9 72 2' fill='none' stroke='%23c9a24a' stroke-width='1.2'/%3E%3Cg transform='translate(18 6)'%3E%3Cpath d='M0 0 V22' stroke='%23c9a24a' stroke-width='.8'/%3E%3Cellipse cx='0' cy='16' rx='5' ry='8' fill='%232e7d32'/%3E%3Cellipse cx='0' cy='17' rx='3.4' ry='4.6' fill='%231565c0'/%3E%3Cellipse cx='0' cy='17.5' rx='2' ry='2.6' fill='%2300897b'/%3E%3Cellipse cx='0' cy='18' rx='1' ry='1.3' fill='%23ffd54f'/%3E%3C/g%3E%3Cg transform='translate(54 6)'%3E%3Cpath d='M0 0 V22' stroke='%23c9a24a' stroke-width='.8'/%3E%3Cellipse cx='0' cy='16' rx='5' ry='8' fill='%232e7d32'/%3E%3Cellipse cx='0' cy='17' rx='3.4' ry='4.6' fill='%231565c0'/%3E%3Cellipse cx='0' cy='17.5' rx='2' ry='2.6' fill='%2300897b'/%3E%3Cellipse cx='0' cy='18' rx='1' ry='1.3' fill='%23ffd54f'/%3E%3C/g%3E%3Ccircle cx='36' cy='7' r='2.4' fill='%23ffd54f'/%3E%3C/svg%3E");
+  --fx-garland-size: 72px 30px; --fx-garland-h: 30px;
+}
+html.fest-ganesh {
+  --fx-night: #2a0a03; --fx-mid: #9a2a07; --fx-warm: #f08a12;
+  --fx-glow: rgba(255, 200, 60, 0.36); --fx-glow2: rgba(229, 57, 53, 0.22);
+  --fx-accent: #ffd36b; --fx-spark: #ffd36b;
+  --fx-btn1: #f6a21a; --fx-btn2: #ffd36b; --fx-btn-text: #2a0a03;
+  --fx-line: linear-gradient(90deg, #c62828, #f6a21a 45%, #ffd36b 70%, #c2531a);
+  --fx-garland: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='72' height='26' viewBox='0 0 72 26'%3E%3Cpath d='M0 2 Q36 16 72 2' fill='none' stroke='%23b8860b' stroke-width='1.6'/%3E%3Cpath d='M18 9.5 q-4 6 0 11 q4 -5 0 -11z' fill='%233f8f2f'/%3E%3Cpath d='M54 9.5 q-4 6 0 11 q4 -5 0 -11z' fill='%233f8f2f'/%3E%3Cg transform='translate(36 13)'%3E%3Ccircle r='7' fill='%23f28c0f'/%3E%3Ccircle r='5.2' fill='%23f6a21a'/%3E%3Ccircle r='3.2' fill='%23ffc23d'/%3E%3Ccircle r='1.4' fill='%23c2531a'/%3E%3C/g%3E%3Ccircle cx='9' cy='5.6' r='2.6' fill='%23e0457b'/%3E%3Ccircle cx='63' cy='5.6' r='2.6' fill='%23e0457b'/%3E%3C/svg%3E");
+  --fx-garland-size: 72px 26px; --fx-garland-h: 26px;
+}
+html.fest-onam {
+  --fx-night: #10301a; --fx-mid: #2f6b2a; --fx-warm: #c99a12;
+  --fx-glow: rgba(255, 236, 179, 0.34); --fx-glow2: rgba(255, 152, 0, 0.2);
+  --fx-accent: #ffe9a8; --fx-spark: #fff8e1;
+  --fx-btn1: #e8b21c; --fx-btn2: #ffe9a8; --fx-btn-text: #10301a;
+  --fx-line: linear-gradient(90deg, #c99a12, #fff8e1 50%, #c99a12);
+  --fx-garland: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='72' height='26' viewBox='0 0 72 26'%3E%3Cpath d='M0 2 Q36 12 72 2' fill='none' stroke='%23558b2f' stroke-width='1.4'/%3E%3Cpath d='M6 4 q-6 8 2 16 q4 -8 -2 -16z' fill='%23558b2f'/%3E%3Ccircle cx='22' cy='9' r='5' fill='%23f6a21a'/%3E%3Ccircle cx='22' cy='9' r='2.2' fill='%23fff8e1'/%3E%3Ccircle cx='36' cy='11' r='5' fill='%23fdd835'/%3E%3Ccircle cx='36' cy='11' r='2.2' fill='%23e65100'/%3E%3Ccircle cx='50' cy='9' r='5' fill='%23fff8e1'/%3E%3Ccircle cx='50' cy='9' r='2.2' fill='%23f6a21a'/%3E%3Cpath d='M66 4 q6 8 -2 16 q-4 -8 2 -16z' fill='%23558b2f'/%3E%3C/svg%3E");
+  --fx-garland-size: 72px 26px; --fx-garland-h: 26px;
+}
+html.fest-gurpurab {
+  --fx-night: #0b1640; --fx-mid: #1d3a8a; --fx-warm: #e8891a;
+  --fx-glow: rgba(255, 204, 51, 0.32); --fx-glow2: rgba(255, 152, 0, 0.18);
+  --fx-accent: #ffcc33; --fx-spark: #ffe8a3;
+  --fx-btn1: #f39c12; --fx-btn2: #ffcc33; --fx-btn-text: #0b1640;
+  --fx-line: linear-gradient(90deg, #1d3a8a, #e8891a 50%, #1d3a8a);
+  --fx-garland: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='22' viewBox='0 0 48 22'%3E%3Cpath d='M0 2 Q24 9 48 2' fill='none' stroke='%235d4037' stroke-width='1'/%3E%3Cpath d='M12 5 V8 M36 5 V8' stroke='%235d4037' stroke-width='1'/%3E%3Cellipse cx='12' cy='12' rx='3.2' ry='4.4' fill='%23ffcc33'/%3E%3Cellipse cx='12' cy='12' rx='1.6' ry='2.4' fill='%23fff8d6'/%3E%3Cellipse cx='36' cy='12' rx='3.2' ry='4.4' fill='%23ffcc33'/%3E%3Cellipse cx='36' cy='12' rx='1.6' ry='2.4' fill='%23fff8d6'/%3E%3C/svg%3E");
+  --fx-garland-size: 48px 22px; --fx-garland-h: 22px;
 }
 
 /* ---- Shared festival look ---- */
@@ -114,7 +189,9 @@ html.fest .cta-band {
     linear-gradient(112deg, var(--fx-night), var(--fx-mid) 58%, var(--fx-warm));
 }
 html.fest-diwali .cta-band::before,
-html.fest-navratri .cta-band::before {
+html.fest-navratri .cta-band::before,
+html.fest-ganesh .cta-band::before,
+html.fest-gurpurab .cta-band::before {
   content: "";
   position: absolute;
   right: -46px;
@@ -218,4 +295,50 @@ a.fx-chip:hover { background: rgba(0, 0, 0, 0.34); }
   .fx-spark, .fx-flame, .fx-puff, .fx-snow, html.fest .cta-band::before { animation: none; }
   .fx-spark { opacity: 0.7; }
   .fx-snow { display: none; }
+}
+
+/* kites (Sankranti), falling petals (Ganesh, Onam, Ugadi, Vaisakhi) */
+.fx-kite {
+  position: absolute;
+  width: 34px;
+  height: 46px;
+  opacity: 0.9;
+  filter: drop-shadow(0 6px 8px rgba(0, 0, 0, 0.25));
+  animation: fx-kite 7s ease-in-out infinite alternate;
+}
+.fx-kite svg { width: 100%; height: 100%; overflow: visible; }
+.fx-petal {
+  position: absolute;
+  top: -14px;
+  border-radius: 60% 0 60% 0;
+  opacity: 0.9;
+  animation: fx-petal linear infinite;
+}
+/* big corner decoration: sun, peacock feather, pookalam, rakhi, wheat */
+.fx-deco {
+  position: absolute;
+  top: 18px;
+  right: 4%;
+  width: clamp(64px, 8vw, 104px);
+  height: auto;
+  z-index: 1;
+  pointer-events: none;
+  filter: drop-shadow(0 0 16px var(--fx-glow));
+}
+.page-hero > .fx-deco { position: absolute; }
+.fx-deco.fx-spin-slow { animation: fx-spin 50s linear infinite; }
+.fx-deco.fx-sway { transform-origin: 50% 0; animation: fx-sway 5s ease-in-out infinite alternate; }
+@keyframes fx-kite { from { transform: translate(0, 0) rotate(-8deg); } to { transform: translate(18px, -14px) rotate(9deg); } }
+@keyframes fx-petal { from { transform: translate(0, -14px) rotate(0deg); } to { transform: translate(var(--fx-sway, 30px), 110vh) rotate(540deg); } }
+@keyframes fx-sway { from { transform: rotate(-6deg); } to { transform: rotate(6deg); } }
+@media (max-width: 720px) {
+  .fx-deco { width: 54px; top: 12px; }
+  .fx-kite { display: none; }
+}
+@media (max-width: 600px) {
+  .hero > .fx-deco { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .fx-kite, .fx-deco.fx-spin-slow, .fx-deco.fx-sway { animation: none; }
+  .fx-petal { display: none; }
 }

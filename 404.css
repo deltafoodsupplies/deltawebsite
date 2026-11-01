@@ -99,5 +99,5 @@ html.fest .lost-hero { background: radial-gradient(circle at 80% 30%, var(--fx-g
 }
 
 .lost-hero > .fx-sky { z-index: 0; }
-.lost-hero > .fx-moon, .lost-hero > .fx-diyas { display: none; }
+.lost-hero > .fx-moon, .lost-hero > .fx-diyas, .lost-hero > .fx-deco { display: none; }
 .lost-copy, .lost-scene { position: relative; z-index: 1; }
