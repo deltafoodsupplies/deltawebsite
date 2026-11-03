@@ -107,31 +107,82 @@
       }
     }
 
-    // Dallas warehouse: a brass handi of curry on a rangoli
+    // Dallas warehouse: a Delta-blue warehouse with the lotus emblem and loading doors
     var hq = new THREE.Group();
     hq.position.copy(dallas);
-    hq.scale.setScalar(1.45);
+    hq.scale.setScalar(1.6);
     world.add(hq);
-    var prof = [[0, 0], [0.13, 0.01], [0.21, 0.07], [0.25, 0.17], [0.23, 0.26], [0.17, 0.32], [0.15, 0.35], [0.19, 0.38], [0.19, 0.4], [0.16, 0.4]].map(function (p) { return new THREE.Vector2(p[0], p[1]); });
-    var pot = new THREE.Mesh(new THREE.LatheGeometry(prof, 32), new THREE.MeshStandardMaterial({ color: 0xeab54d, metalness: 0.4, roughness: 0.32, emissive: 0x5a3a00, emissiveIntensity: 0.25, side: THREE.DoubleSide }));
-    hq.add(pot);
-    var curry = new THREE.Mesh(new THREE.CircleGeometry(0.155, 32), new THREE.MeshStandardMaterial({ color: 0xe0761b, roughness: 0.6, emissive: 0x7a2d00, emissiveIntensity: 0.25 }));
-    curry.rotation.x = -Math.PI / 2;
-    curry.position.y = 0.375;
-    hq.add(curry);
-    var band = new THREE.Mesh(new THREE.TorusGeometry(0.245, 0.012, 8, 40), new THREE.MeshStandardMaterial({ color: 0xa8741c, metalness: 0.8, roughness: 0.3 }));
-    band.rotation.x = Math.PI / 2;
-    band.position.y = 0.17;
-    hq.add(band);
-    addSteam(hq, 0.42, 0.18, 7, 0.05);
-    // rangoli petals around the pot
+    // walls: house-shaped profile extruded along the length (gable ends left/right, long side faces the viewer)
+    var W = 0.56, D = 0.34, H = 0.2, RH = 0.075;
+    var prof = new THREE.Shape();
+    prof.moveTo(-D / 2, 0); prof.lineTo(D / 2, 0); prof.lineTo(D / 2, H); prof.lineTo(0, H + RH); prof.lineTo(-D / 2, H); prof.lineTo(-D / 2, 0);
+    var wallGeo = new THREE.ExtrudeGeometry(prof, { depth: W, bevelEnabled: false });
+    wallGeo.translate(0, 0, -W / 2);
+    var walls = new THREE.Mesh(wallGeo, std(0xf2f5fb, { roughness: 0.7 }));
+    walls.rotation.y = Math.PI / 2;
+    hq.add(walls);
+    // roof panels in Delta blue, slightly overhanging
+    var slope = Math.atan2(RH, D / 2), panelW = Math.hypot(D / 2, RH) + 0.03;
+    [-1, 1].forEach(function (side) {
+      var panel = new THREE.Mesh(new THREE.BoxGeometry(W + 0.05, 0.016, panelW), std(0x0a2a66, { roughness: 0.45, metalness: 0.2 }));
+      panel.rotation.x = side * slope;
+      panel.position.set(0, H + RH / 2 + 0.008, side * (D / 4 + 0.006));
+      hq.add(panel);
+    });
+    // gold band and lotus emblem on the front wall
+    var bandF = new THREE.Mesh(new THREE.BoxGeometry(W, 0.05, 0.006), std(0x073f98, { roughness: 0.5 }));
+    bandF.position.set(0, 0.155, D / 2 + 0.003);
+    hq.add(bandF);
+    // white sign board standing on the front roof edge, carrying the lotus
+    var sign = new THREE.Mesh(new THREE.BoxGeometry(0.17, 0.1, 0.012), std(0xffffff, { roughness: 0.4, emissive: 0xffffff, emissiveIntensity: 0.15 }));
+    sign.position.set(0, H + 0.07, D / 2 - 0.02);
+    hq.add(sign);
+    var signRim = new THREE.Mesh(new THREE.BoxGeometry(0.18, 0.11, 0.008), std(0xf2b705, { metalness: 0.5, roughness: 0.3 }));
+    signRim.position.set(0, H + 0.07, D / 2 - 0.028);
+    hq.add(signRim);
+    var lotus = new THREE.Group();
+    lotus.position.set(0, H + 0.065, D / 2 - 0.013);
+    lotus.scale.setScalar(2.1);
+    [[0xf2b705, 0, 0.034], [0x2f7de1, -0.75, 0.028], [0x7cb342, 0.75, 0.028]].forEach(function (q) {
+      var pet = new THREE.Mesh(new THREE.CircleGeometry(0.5, 24), new THREE.MeshStandardMaterial({ color: q[0], emissive: q[0], emissiveIntensity: 0.35, roughness: 0.4, side: THREE.DoubleSide }));
+      pet.scale.set(0.018, q[2], 1);
+      pet.position.set(Math.sin(q[1]) * 0.016, -0.004 + (q[1] ? -0.002 : 0.002), 0.001 * (q[1] ? 1 : 2));
+      pet.rotation.z = -q[1];
+      lotus.add(pet);
+    });
+    hq.add(lotus);
+    // three roll-up loading doors; the middle one opens as trucks head out
+    var doors = [];
+    [-0.17, 0, 0.17].forEach(function (x, n) {
+      var glow = new THREE.Mesh(new THREE.PlaneGeometry(0.1, 0.11), new THREE.MeshBasicMaterial({ color: 0xffc56b }));
+      glow.position.set(x, 0.055, D / 2 + 0.001);
+      hq.add(glow);
+      var door = new THREE.Group();
+      door.position.set(x, 0.11, D / 2 + 0.004);
+      var slab = new THREE.Mesh(new THREE.BoxGeometry(0.1, 0.11, 0.006), std(0x9aa8bf, { roughness: 0.55, metalness: 0.3 }));
+      slab.position.y = -0.055;
+      door.add(slab);
+      for (var l = 1; l < 5; l++) {
+        var line = new THREE.Mesh(new THREE.BoxGeometry(0.1, 0.004, 0.008), std(0x7b879c));
+        line.position.y = -l * 0.022;
+        door.add(line);
+      }
+      door.userData.phase = n;
+      hq.add(door);
+      doors.push(door);
+    });
+    // loading apron
+    var apron = new THREE.Mesh(new THREE.BoxGeometry(W + 0.06, 0.012, 0.1), std(0xc9d2e2, { roughness: 0.9 }));
+    apron.position.set(0, 0.006, D / 2 + 0.05);
+    hq.add(apron);
+    // rangoli petals around the warehouse
     var rangoliCols = [0xe91e63, 0xffc107, 0xff7043, 0x43a047, 0x7e57c2, 0xffffff];
     for (var rp = 0; rp < 18; rp++) {
       var ang = rp / 18 * Math.PI * 2;
       var petal = new THREE.Mesh(new THREE.CircleGeometry(0.055, 3), new THREE.MeshBasicMaterial({ color: rangoliCols[rp % rangoliCols.length], side: THREE.DoubleSide }));
       petal.rotation.x = -Math.PI / 2;
       petal.rotation.z = -ang;
-      petal.position.set(Math.cos(ang) * 0.36, 0.012, Math.sin(ang) * 0.36);
+      petal.position.set(Math.cos(ang) * 0.44, 0.012, Math.sin(ang) * 0.38);
       hq.add(petal);
     }
     var rings = [];
@@ -340,6 +391,11 @@
         spPos[q * 3 + 2] = sd.z + Math.cos(t * 0.4 + sd.w) * 0.2;
       }
       spGeo.attributes.position.needsUpdate = true;
+      doors.forEach(function (d) {
+        var k3 = (t * 0.22 + d.userData.phase * 0.33) % 1;
+        var open = k3 < 0.5 ? Math.sin(k3 * 2 * Math.PI) : 0; // open, hold, close, then stay shut
+        d.scale.y = 1 - 0.75 * Math.max(0, Math.min(1, open * 1.4));
+      });
       rings.forEach(function (ring) {
         var p = ((t * 0.6) + ring.userData.offset) % 1;
         ring.scale.setScalar(1 + p * 1.6);
