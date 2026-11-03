@@ -1,7 +1,7 @@
-// Language toggle — English, Telugu, Hindi, Gujarati, Tamil, Punjabi, Urdu, Bengali.
+// Language toggle — English, Telugu, Hindi, Gujarati, Tamil, Punjabi, Urdu, Bengali, Spanish.
 // Translates the shared menu/footer on every page and the full home page + contact form.
 // To fix or add a translation, edit a row in ROWS: [English, हिन्दी, ગુજરાતી, ਪੰਜਾਬੀ, اردو, বাংলা]
-// and the matching row in ROWS_SOUTH: [తెలుగు, தமிழ்] (same order as ROWS).
+// and the matching row in ROWS_SOUTH: [తెలుగు, தமிழ்] and ROWS_ES: Español (same order as ROWS).
 // Visitors whose phone/browser language is one of these get a one-time "view in your language?" prompt (never an automatic switch).
 // The English text must match the page text exactly (spacing doesn't matter).
 (function () {
@@ -13,9 +13,10 @@
     { code: "ta", label: "தமிழ்", short: "த", font: "Noto+Sans+Tamil:wght@400;500;600;700;800" },
     { code: "pa", label: "ਪੰਜਾਬੀ", short: "ਪੰ", font: "Noto+Sans+Gurmukhi:wght@400;500;600;700;800" },
     { code: "ur", label: "اردو", short: "ار", font: "Noto+Nastaliq+Urdu:wght@400;500;600;700", rtl: true },
-    { code: "bn", label: "বাংলা", short: "বা", font: "Noto+Sans+Bengali:wght@400;500;600;700;800" }
+    { code: "bn", label: "বাংলা", short: "বা", font: "Noto+Sans+Bengali:wght@400;500;600;700;800" },
+    { code: "es", label: "Español", short: "ES" }
   ];
-  var COL = { hi: 1, gu: 2, pa: 3, ur: 4, bn: 5, te: 6, ta: 7 };
+  var COL = { hi: 1, gu: 2, pa: 3, ur: 4, bn: 5, te: 6, ta: 7, es: 8 };
 
   // One-time prompt shown when the phone/browser language matches: [question, yes button]
   var PROMPT = {
@@ -25,7 +26,8 @@
     ta: ["இந்த இணையதளத்தை தமிழில் பார்க்க விரும்புகிறீர்களா?", "தமிழில் பாருங்கள்"],
     pa: ["ਕੀ ਤੁਸੀਂ ਇਹ ਵੈੱਬਸਾਈਟ ਪੰਜਾਬੀ ਵਿੱਚ ਦੇਖਣਾ ਚਾਹੋਗੇ?", "ਪੰਜਾਬੀ ਵਿੱਚ ਦੇਖੋ"],
     ur: ["کیا آپ یہ ویب سائٹ اردو میں دیکھنا چاہیں گے؟", "اردو میں دیکھیں"],
-    bn: ["আপনি কি এই ওয়েবসাইটটি বাংলায় দেখতে চান?", "বাংলায় দেখুন"]
+    bn: ["আপনি কি এই ওয়েবসাইটটি বাংলায় দেখতে চান?", "বাংলায় দেখুন"],
+    es: ["¿Desea ver este sitio web en español?", "Ver en español"]
   };
 
   var ROWS = [
@@ -446,7 +448,170 @@
     ["డెల్టా కుటుంబం నుండి జూలై 4 శుభాకాంక్షలు", "டெல்டா குடும்பத்தின் ஜூலை 4 நல்வாழ்த்துகள்"],
     ["డెల్టా కుటుంబం నుండి స్వాతంత్ర్య దినోత్సవ శుభాకాంక్షలు", "டெல்டா குடும்பத்தின் சுதந்திர தின நல்வாழ்த்துகள்"]
   ];
+  // Spanish, same order as ROWS
+  var ROWS_ES = [
+    "Productos",
+    "Cobertura",
+    "Marcas",
+    "Ser cliente",
+    "Hágase cliente",
+    "Preguntas",
+    "Nosotros",
+    "Contacto",
+    "Todas las zonas de servicio",
+    "Todas las marcas",
+    "Estados",
+    "Ciudades principales",
+    "Marcas actuales",
+    "Directorio de marcas",
+    "Productos y marcas",
+    "Todos los productos",
+    "Guías para compradores",
+    "Catálogo de productos (PDF)",
+    "Consultar disponibilidad",
+    "Empresa",
+    "Sobre Delta",
+    "Contactar a ventas",
+    "Proveedores",
+    "Empleos",
+    "Reseñas en Google",
+    "Privacidad",
+    "Solicitar información mayorista",
+    "Inicio",
+    "Ir al contenido principal",
+    "Distribuidor mayorista de alimentos indios y del sur de Asia con sede en Dallas, que abastece a más de 300 supermercados, restaurantes, empresas de catering y servicios de alimentos en cinco estados desde 2019.",
+    "Copyright © 2026 Delta Food Supplies | Todos los derechos reservados ·",
+    "Oficina: +1 469.473.6655",
+    "Fax: +1 903.609.1653",
+    "Sede: 11309 Indian Trail, Dallas, TX 75229",
+    "Feliz Diwali de parte de la familia Delta",
+    "Feliz Holi de parte de la familia Delta",
+    "Feliz Navratri y Dussehra de parte de la familia Delta",
+    "Ramadán Mubarak de parte de la familia Delta",
+    "Eid Mubarak de parte de la familia Delta",
+    "Felices fiestas de parte de la familia Delta",
+    "Distribuidor de alimentos indios y del sur de Asia",
+    "Distribuidor mayorista de alimentos indios y del sur de Asia en Dallas — con entregas en cinco estados.",
+    "Ingredientes de calidad",
+    "Suministro confiable",
+    "Alianzas más sólidas",
+    "Desde 2019 mantenemos abastecidos a más de 300 supermercados y restaurantes con los productos indios y del sur de Asia que piden sus clientes — recogida en almacén o entrega en nuestros propios camiones.",
+    "Escríbanos por WhatsApp",
+    "Ver productos",
+    "¿Entregamos en su zona? Consulte su ciudad",
+    "negocios abastecidos",
+    "al servicio desde",
+    "estados en nuestra región de entrega",
+    "Distribuimos las marcas que piden sus clientes",
+    "Productos",
+    "Todo lo que se espera de un proveedor confiable de alimentos indios y del sur de Asia.",
+    "Consulte la disponibilidad actual",
+    "Aperitivos congelados y listos para calentar",
+    "Samosas, tikkis, kebabs, momos, parathas, idli y desayunos del sur de la India — las líneas de congelados de mayor rotación de la categoría.",
+    "Lácteos y paneer",
+    "Paneer, ghee, dahi, lassi y khoa — productos refrigerados básicos para departamentos de alta rotación.",
+    "Mithai y postres",
+    "Rasmalai, gulab jamun, barfi, ladoo y dulces para celebraciones.",
+    "Despensa básica",
+    "Arroz, atta, dals, aceites, especias, encurtidos, papads y productos de uso diario.",
+    "Botanas y bebidas",
+    "Namkeen, galletas, té, café y productos de compra impulsiva.",
+    "Suministro para restaurantes",
+    "Formatos a granel para restaurantes, catering, templos y cocinas.",
+    "categorías de productos, un proveedor confiable",
+    "Ver el catálogo completo",
+    "Los más vendidos",
+    "Lácteos Nanak de confianza, en existencia y listos para enviar.",
+    "Nanak es parte central de nuestra oferta, sobre todo en lácteos, aperitivos congelados, dulces y postres. Ayudamos a tiendas y restaurantes a tener siempre disponibles los favoritos que sus clientes reconocen.",
+    "Marcas populares",
+    "Marcas que los clientes reconocen en tiendas y restaurantes.",
+    "Ver directorio de marcas",
+    "Ver marcas",
+    "Productos Nanak",
+    "Paneer, ghee, dahi, aperitivos congelados, rasmalai, gulab jamun y dulces a granel.",
+    "Verduras congeladas, parottas, platos listos para comer, coco, yaca y productos regionales.",
+    "Agua para pani puri, goli soda, té, verduras congeladas, masalas, botanas y bebidas.",
+    "Mezclas de masala, paquetes para restaurantes, biryani, curry, chana, tandoori y especias de cocina.",
+    "Mayonesa, aderezos para sándwich, salsas, chutneys, coberturas y condimentos para servicios de alimentos.",
+    "Momos de paneer, veganos, de pollo halal y a granel para tiendas y restaurantes.",
+    "Pase el cursor sobre un estado · haga clic para ver detalles",
+    "Zona de servicio",
+    "Distribución regional de alimentos del sur de Asia en Texas y estados vecinos.",
+    "Atendemos a supermercados independientes, cadenas regionales, restaurantes, empresas de catering y organizaciones comunitarias en Texas, Nuevo México, Oklahoma, Arkansas y Luisiana. Cuéntenos qué productos necesita, dónde se entregan y con qué frecuencia compra, y le ayudaremos a elegir el surtido indio y del sur de Asia adecuado para su negocio.",
+    "Región de estados",
+    "Clientes atendidos",
+    "Socio de suministro mayorista",
+    "Cobertura",
+    "¿Está en nuestra zona de cobertura?",
+    "Escriba su ciudad para ver si está dentro de nuestra región de cinco estados. La entrega depende de la ruta y del tamaño del pedido — nuestro equipo de ventas confirma los detalles.",
+    "Su ciudad",
+    "Cómo trabajamos",
+    "Suministro sencillo, del catálogo a la entrega.",
+    "Cuéntenos qué necesita",
+    "Indíquenos su tipo de negocio, ubicación, categorías prioritarias y demanda actual.",
+    "Armamos el surtido",
+    "Le recomendamos un surtido práctico de congelados, lácteos, despensa, botanas y dulces.",
+    "Recogida o entrega en camión",
+    "Recoja en uno de nuestros almacenes o coordine la entrega con nuestras rutas de camiones propios.",
+    "Restaurantes y tiendas confían en Delta.",
+    "Leer más reseñas en Google",
+    "Al servicio de negocios de alimentos de la región desde 2019.",
+    "Delta Food Supplies atiende la creciente demanda de alimentos indios y del sur de Asia en Texas, Nuevo México, Oklahoma, Arkansas y Luisiana. Desde 2019 hemos trabajado con más de 300 clientes, facilitando el abastecimiento a negocios que necesitan productos constantes, un servicio ágil y un socio que conoce la categoría.",
+    "Sede y opciones de pedido",
+    "Recoja en un almacén de Delta o reciba su pedido en nuestros camiones.",
+    "La sede de Delta Food Supplies está en",
+    ". Los clientes pueden recoger en persona los pedidos mayoristas que califiquen, o coordinar con nuestro equipo la entrega en nuestras rutas de camiones propios en Texas, Nuevo México, Oklahoma, Arkansas, Luisiana y mercados vecinos.",
+    "Oficina",
+    "Fax",
+    "Sede",
+    "Preguntas frecuentes sobre cómo pedir a Delta Food Supplies.",
+    "¿Dónde está Delta Food Supplies?",
+    "Nuestra sede está en 11309 Indian Trail, Dallas, TX 75229.",
+    "¿Se puede recoger en persona?",
+    "Sí. Los clientes pueden coordinar la recogida en persona en nuestra sede de Dallas para los pedidos mayoristas que califiquen.",
+    "¿Ofrecen recogida o entrega?",
+    "Sí. Los clientes mayoristas que califiquen pueden recoger en uno de nuestros almacenes, y también entregamos con camiones propios en las rutas que cubrimos en Texas, Nuevo México, Oklahoma, Arkansas, Luisiana y mercados vecinos.",
+    "¿A qué tipo de negocios atienden?",
+    "Atendemos a restaurantes, supermercados, empresas de catering, servicios de alimentos y organizaciones comunitarias.",
+    "¿Qué productos puedo pedir?",
+    "Ofrecemos congelados del sur de Asia, lácteos, despensa, botanas, dulces, suministros para restaurantes y los productos Nanak más vendidos.",
+    "Hablemos",
+    "¿Necesita productos alimenticios del sur de Asia para su negocio?",
+    "Consúltenos sobre disponibilidad actual, productos Nanak, cuentas mayoristas, recogida en almacén, rutas de entrega en camión o pedidos especiales.",
+    "Nombre del negocio",
+    "Correo electrónico",
+    "Ciudad",
+    "¿Qué necesita?",
+    "Enviar consulta",
+    "Su consulta llega directamente a nuestro equipo de ventas. ¿Prefiere el correo? Escriba a sales@deltafoodsupplies.com.",
+    "p. ej. Katy, Tulsa, Baton Rouge…",
+    "Dallas, Houston, Austin, Oklahoma City, Albuquerque o Nueva Orleans",
+    "Cuéntenos sobre categorías de productos, volumen, almacén de recogida, ruta de entrega o necesidades de entrega en camión.",
+    "Error 404 · Página no encontrada",
+    "Esta página se equivocó de camino.",
+    "Nuestro camión buscó esta dirección y volvió vacío. Puede que el enlace sea antiguo o que la página se haya movido — pero los estantes siguen llenos.",
+    "Este es nuestro catálogo",
+    "Volver al inicio",
+    "Paradas populares de nuestra ruta",
+    "Especias, harina, arroz, lentejas, botanas, dulces, congelados y más",
+    "Las marcas indias y del sur de Asia que distribuimos",
+    "Texas, Oklahoma, Luisiana, Arkansas y Nuevo México",
+    "Abra una cuenta mayorista para su tienda o restaurante",
+    "Pedidos mínimos, días de entrega, recogida y pago",
+    "Llámenos, escríbanos por WhatsApp o envíenos un mensaje",
+    "Feliz Sankranti, Pongal y Lohri de parte de la familia Delta",
+    "Feliz Ugadi de parte de la familia Delta",
+    "Feliz Vaisakhi y Año Nuevo de parte de la familia Delta",
+    "Feliz Raksha Bandhan de parte de la familia Delta",
+    "Feliz Janmashtami de parte de la familia Delta",
+    "Feliz Ganesh Chaturthi de parte de la familia Delta",
+    "Feliz Onam de parte de la familia Delta",
+    "Feliz Gurpurab de parte de la familia Delta",
+    "Feliz 4 de Julio de parte de la familia Delta",
+    "Feliz Día de la Independencia de la India de parte de la familia Delta"
+  ];
   ROWS.forEach(function (r, n) { var t = ROWS_SOUTH[n]; if (t) { r[6] = t[0]; r[7] = t[1]; } });
+  ROWS.forEach(function (r, n) { if (ROWS_ES[n]) r[8] = ROWS_ES[n]; });
 
   // ---------------- engine ----------------
   function norm(s) { return String(s).replace(/\s+/g, " ").trim(); }
@@ -483,7 +648,8 @@
   var HL = {
     hi: ["पाँच राज्यों", "गलत मोड़"], gu: ["પાંચ રાજ્યો", "ખોટા વળાંકે"], pa: ["ਪੰਜ ਰਾਜਾਂ", "ਗਲਤ ਮੋੜ"],
     ur: ["پانچ ریاستوں", "غلط موڑ"], bn: ["পাঁচটি রাজ্যে", "ভুল মোড়"],
-    te: ["ఐదు రాష్ట్రాల్లో", "దారి తప్పింది"], ta: ["ஐந்து மாநிலங்களில்", "வழி தவறிவிட்டது"]
+    te: ["ఐదు రాష్ట్రాల్లో", "దారి తప్పింది"], ta: ["ஐந்து மாநிலங்களில்", "வழி தவறிவிட்டது"],
+    es: ["cinco estados", "se equivocó de camino"]
   };
   function highlight(el, code) {
     var t = el.textContent, list = HL[code] || [], w, i = -1;

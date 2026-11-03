@@ -72,6 +72,7 @@ html[data-i18n="ur"] { --i18n-font: "Noto Nastaliq Urdu"; }
 html[data-i18n="bn"] { --i18n-font: "Noto Sans Bengali"; }
 html[data-i18n="te"] { --i18n-font: "Noto Sans Telugu"; }
 html[data-i18n="ta"] { --i18n-font: "Noto Sans Tamil"; }
+html[data-i18n="es"] { --i18n-font: Inter; }
 
 html[data-i18n] body,
 html[data-i18n] :is(button, input, textarea, select, .button) {
@@ -94,6 +95,7 @@ html[data-i18n="ur"] .hero h1 { font-size: clamp(1.7rem, 4vw, 3.1rem); }
 /* Tamil words run long: slightly smaller big headings so they don't overflow */
 html[data-i18n="ta"] .hero h1 { font-size: clamp(1.7rem, 3.4vw, 2.7rem); }
 html[data-i18n="ta"] :is(h2) { font-size: clamp(1.6rem, 3.2vw, 2.6rem); }
+html[data-i18n="es"] .hero h1 { font-size: clamp(1.8rem, 3.7vw, 3rem); }
 html[data-i18n="ta"] .lost-hero h1 { font-size: clamp(2rem, 4.4vw, 3.4rem); max-width: 16ch; }
 html[data-i18n="te"] .lost-hero h1, html[data-i18n] .lost-hero h1 { max-width: 16ch; }
 
@@ -151,12 +153,12 @@ html[data-i18n="te"] .lost-hero h1, html[data-i18n] .lost-hero h1 { max-width: 1
 
 /* Telugu and Tamil menu words are longer: keep each item on one line and the logo full size */
 @media (min-width: 981px) {
-  html:is([data-i18n="te"], [data-i18n="ta"]) .site-nav :is(a, button) { white-space: nowrap; font-size: 0.88rem; padding-left: 9px; padding-right: 9px; }
-  html:is([data-i18n="te"], [data-i18n="ta"]) .brand { flex-shrink: 0; }
+  html:is([data-i18n="te"], [data-i18n="ta"], [data-i18n="es"]) .site-nav :is(a, button) { white-space: nowrap; font-size: 0.88rem; padding-left: 9px; padding-right: 9px; }
+  html:is([data-i18n="te"], [data-i18n="ta"], [data-i18n="es"]) .brand { flex-shrink: 0; }
 }
 @media (min-width: 981px) and (max-width: 1240px) {
-  html:is([data-i18n="te"], [data-i18n="ta"]) .site-nav :is(a, button) { font-size: 0.8rem; padding-left: 7px; padding-right: 7px; }
-  html:is([data-i18n="te"], [data-i18n="ta"]) .brand { width: min(200px, 22vw); }
+  html:is([data-i18n="te"], [data-i18n="ta"], [data-i18n="es"]) .site-nav :is(a, button) { font-size: 0.8rem; padding-left: 7px; padding-right: 7px; }
+  html:is([data-i18n="te"], [data-i18n="ta"], [data-i18n="es"]) .brand { width: min(200px, 22vw); }
 }
 @media (min-width: 981px) and (max-width: 1480px) {
   html[data-i18n="ta"] .site-nav :is(a, button) { font-size: 0.8rem; padding-left: 6px; padding-right: 6px; }
