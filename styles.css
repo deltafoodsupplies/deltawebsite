@@ -5799,3 +5799,27 @@ iframe:focus { outline: 3px solid var(--focus-ring) !important; outline-offset: 
 .copy-block .soon-note { background: #fff6dc; border-left: 4px solid #e0a100; padding: 14px 18px; border-radius: 10px; color: #3d2f00; }
 .lang-alt { margin: 0 0 18px; font-weight: 600; }
 .lang-alt a { color: inherit; }
+
+/* Customer login (orders.deltafoodsupplies.com) */
+.site-nav .nav-login {
+  gap: 6px;
+  color: var(--blue-900);
+  border: 1.5px solid rgba(21, 66, 151, 0.28);
+  background: #fff;
+  white-space: nowrap;
+}
+.site-nav .nav-login svg { width: 17px; height: 17px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; flex-shrink: 0; }
+.site-nav .nav-login:hover,
+.site-nav .nav-login:focus-visible { border-color: var(--blue-700); background: var(--blue-100); }
+@media (min-width: 981px) and (max-width: 1360px) {
+  .site-nav .nav-login span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  .site-nav .nav-login { padding: 9px 10px; }
+}
+@media (max-width: 980px) {
+  .site-nav .nav-login { justify-content: center; margin-top: 6px; }
+}
+.hero-login-link { margin-left: 22px; color: #fff; border-bottom-color: rgba(255, 255, 255, 0.45); }
+.hero-login-link:hover, .hero-login-link:focus-visible { border-color: #fff; }
+@media (max-width: 600px) { .hero-login-link { margin-left: 0; } }
+.page-hero .login-note { margin-top: 14px; font-weight: 700; }
+.page-hero .login-note a { color: #dcf58a; text-decoration: underline; text-underline-offset: 3px; }

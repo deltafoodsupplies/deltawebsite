@@ -1,7 +1,7 @@
 // Visitor stats with GoatCounter (privacy-friendly: no cookies, no personal data).
 // Dashboard: https://deltafoodsupplies.goatcounter.com  (private — log in to view)
 // Counts page views plus a few useful actions, listed under "events" in the dashboard:
-//   whatsapp, call, email, inquiry-form, language/<code>, language-prompt/<yes|no>, festival-chip/<theme>, order-cta
+//   customer-login, whatsapp, call, email, inquiry-form, language/<code>, language-prompt/<yes|no>, festival-chip/<theme>, order-cta
 (function () {
   var CODE = "deltafoodsupplies";
   // Only count the live site — not local copies or previews
@@ -38,7 +38,8 @@
     var t = e.target.closest ? e.target.closest("a, button") : null;
     if (!t) return;
     var href = t.getAttribute("href") || "";
-    if (/^https:\/\/wa\.me\//.test(href)) send("whatsapp", "WhatsApp tap on " + page);
+    if (/^https:\/\/orders\.deltafoodsupplies\.com/.test(href)) send("customer-login", "Login / order online from " + page);
+    else if (/^https:\/\/wa\.me\//.test(href)) send("whatsapp", "WhatsApp tap on " + page);
     else if (/^tel:/.test(href)) send("call", "Phone tap on " + page);
     else if (/^mailto:/.test(href)) send("email", "Email tap on " + page);
     else if (t.classList.contains("fx-chip")) send("festival-chip/" + (document.documentElement.getAttribute("data-festival") || "unknown"), "Festival greeting tap");

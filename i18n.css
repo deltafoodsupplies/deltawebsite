@@ -172,3 +172,17 @@ html[data-i18n="te"] .lost-hero h1, html[data-i18n] .lost-hero h1 { max-width: 1
   html[data-i18n="ta"] .site-nav :is(a, button) { white-space: normal; line-height: 1.25; }
   html[data-i18n="ta"] .brand { width: 118px; }
 }
+/* Narrow laptops: leave room for the customer-login button */
+@media (min-width: 981px) and (max-width: 1140px) {
+  html:is([data-i18n="te"], [data-i18n="ta"], [data-i18n="es"]) .brand { width: min(150px, 15vw); }
+  html:is([data-i18n="te"], [data-i18n="ta"], [data-i18n="es"]) .site-nav { gap: 2px; }
+  html:is([data-i18n="te"], [data-i18n="ta"], [data-i18n="es"]) .site-nav :is(a, button) { padding-left: 6px; padding-right: 6px; }
+}
+@media (min-width: 981px) and (max-width: 1360px) {
+  html[data-i18n="ta"] .site-nav :is(a, button) { font-size: 0.78rem; padding-left: 6px; padding-right: 6px; }
+}
+@media (min-width: 981px) and (max-width: 1140px) {
+  html[data-i18n="ta"] .site-nav :is(a, button) { font-size: 0.72rem; padding-left: 5px; padding-right: 5px; }
+  html[data-i18n="ta"] .brand { width: min(120px, 12vw); }
+  html[data-i18n="ta"] .lang-switch { margin-left: 4px; }
+}
